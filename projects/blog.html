@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog — Application web PHP de création et gestion d'articles de blog avec espace d'administration. Projet d'apprentissage BTS SIO SLAM par Denys.">
+    <title>Blog — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="project-page-header">
+        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html#projects" class="back-btn">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <div class="project-meta">
+                    <ul class="tech-tags">
+                        <li>PHP</li>
+                        <li>MySQL</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Apache</li>
+                    </ul>
+                    <a href="https://github.com/PlumCreativ/blog" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i class='bx bxl-github' aria-hidden="true"></i> Voir sur GitHub
+                    </a>
+                </div>
+                <h1>Blog</h1>
+                <p class="project-subtitle">Application web de gestion et publication d'articles — CRUD complet avec espace d'administration — Projet d'apprentissage BTS SIO SLAM</p>
+            </div>
+            <div class="project-hero-img">
+                <img src="../img/Blog.png" alt="Capture d'écran de l'application Blog" loading="eager">
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div class="project-content">
+            <div class="project-sections">
+
+                <div class="project-section">
+                    <h2>À propos</h2>
+                    <p>
+                        <strong>Blog</strong> est une application web développée en <strong>PHP</strong> permettant
+                        de créer, gérer et publier des articles en ligne. Ce projet a été conçu dans un objectif
+                        d'apprentissage et de mise en pratique du développement web back-end en PHP avec une base
+                        de données <strong>MySQL</strong>.
+                    </p>
+                    <p>
+                        Il illustre la maîtrise des fondamentaux du développement web dynamique : gestion de sessions,
+                        requêtes paramétrées, séparation des responsabilités et interface d'administration sécurisée.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h2>Fonctionnalités</h2>
+                    <ul>
+                        <li>Consultation de la liste des articles publiés</li>
+                        <li>Création de nouveaux articles avec titre, contenu et métadonnées</li>
+                        <li>Modification d'articles existants</li>
+                        <li>Suppression d'articles avec confirmation</li>
+                        <li>Espace d'administration sécurisé pour la gestion du contenu</li>
+                        <li>Configuration centralisée de la base de données via <code>config.php</code></li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Architecture</h2>
+                    <p>
+                        Le projet suit une architecture <strong>PHP procédurale</strong> avec séparation claire
+                        entre la configuration, les inclusions partagées (header, footer, navigation) et les pages
+                        fonctionnelles. La connexion à la base de données est centralisée et les requêtes sont
+                        paramétrées pour prévenir les injections SQL.
+                    </p>
+                    <ul>
+                        <li>Point d'entrée unique <code>index.php</code></li>
+                        <li>Fichiers inclus réutilisables : <code>includes/</code> (header, footer, nav)</li>
+                        <li>Pages fonctionnelles séparées dans <code>pages/</code></li>
+                        <li>Styles découplés dans <code>css/</code> et ressources dans <code>assets/</code></li>
+                        <li>Configuration BDD centralisée : <code>config.php</code></li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Technologies utilisées</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Technologie</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Langage back-end</td><td>PHP</td><td>7.4+ / 8.x</td></tr>
+                            <tr><td>Base de données</td><td>MySQL / MariaDB</td><td>5.7+</td></tr>
+                            <tr><td>Serveur web</td><td>Apache / Nginx</td><td>—</td></tr>
+                            <tr><td>Frontend</td><td>HTML5, CSS3, JavaScript</td><td>—</td></tr>
+                            <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="project-section">
+                    <h2>Compétences mobilisées</h2>
+                    <ul>
+                        <li>Développer une application web dynamique en PHP avec gestion CRUD complète</li>
+                        <li>Concevoir et interroger une base de données MySQL (SELECT, INSERT, UPDATE, DELETE)</li>
+                        <li>Organiser un projet PHP avec séparation des responsabilités (config, includes, pages)</li>
+                        <li>Sécuriser les requêtes SQL contre les injections via requêtes paramétrées</li>
+                        <li>Implémenter un espace d'administration sécurisé</li>
+                        <li>Versionner un projet avec Git et GitHub</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        <p>Projet BTS SIO SLAM — Denys Lyulchak</p>
+        <a href="../index.html#projects">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </footer>
+
+</body>
+
+</html>

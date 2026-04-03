@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Note de Frais — Application web PHP de gestion des notes de frais professionnelles. Projet BTS SIO SLAM par Denys.">
+    <title>Note de Frais — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="project-page-header">
+        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html#projects" class="back-btn">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <div class="project-meta">
+                    <ul class="tech-tags">
+                        <li>PHP</li>
+                        <li>MySQL</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>dompdf</li>
+                    </ul>
+                    <a href="https://github.com/PlumCreativ/NoteDeFrais" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i class='bx bxl-github' aria-hidden="true"></i> Voir sur GitHub
+                    </a>
+                </div>
+                <h1>Note de Frais</h1>
+                <p class="project-subtitle">Application web de gestion des notes de frais professionnelles — Projet BTS SIO SLAM</p>
+            </div>
+            <div class="project-hero-img">
+                <img src="../img/NoteDeFrais.png" alt="Capture d'écran de l'application Note de Frais" loading="eager">
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div class="project-content">
+            <div class="project-sections">
+
+                <div class="project-section">
+                    <h2>À propos</h2>
+                    <p>
+                        <strong>NoteDeFrais</strong> est une application web développée en PHP permettant aux utilisateurs
+                        de gérer leurs notes de frais professionnelles de manière simple et efficace. L'application offre
+                        un système d'authentification sécurisé, un formulaire de saisie intuitif, et la capacité à
+                        générer des documents PDF récapitulatifs via la librairie <strong>dompdf</strong>.
+                    </p>
+                    <p>
+                        Développé dans le cadre du <strong>BTS SIO (Services Informatiques aux Organisations)</strong>,
+                        spécialité SLAM — Solutions Logicielles et Applications Métier.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h2>Fonctionnalités</h2>
+                    <ul>
+                        <li>Inscription et connexion sécurisée avec gestion de sessions PHP</li>
+                        <li>Saisie de frais : catégorie, date, description, montant HT/TTC, justificatif</li>
+                        <li>Historique des notes avec filtrage par date, catégorie et montant</li>
+                        <li>Export PDF dynamique via dompdf (document professionnel formaté)</li>
+                        <li>Modification et suppression de notes (avec restrictions selon statut)</li>
+                        <li>Validation des données côté serveur (XSS prevention, SQL injection)</li>
+                        <li>Page d'impression HTML en format A4</li>
+                        <li>Profil utilisateur avec modification de mot de passe</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Architecture</h2>
+                    <p>
+                        L'application suit une architecture <strong>procédurale PHP</strong> avec séparation
+                        des responsabilités entre les pages de traitement et les pages de présentation.
+                        Les mots de passe sont chiffrés avec <code>password_hash()</code> et les requêtes
+                        sont paramétrées pour prévenir les injections SQL.
+                    </p>
+                    <ul>
+                        <li>Séparation traitement / présentation (DRY)</li>
+                        <li>Sessions PHP sécurisées avec cookies chiffrés</li>
+                        <li>Requêtes paramétrées (prévention SQL injection)</li>
+                        <li>Hachage des mots de passe avec password_hash() / password_verify()</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Technologies utilisées</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Technologie</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Langage backend</td><td>PHP</td><td>7.4+ / 8.0+</td></tr>
+                            <tr><td>Base de données</td><td>MySQL</td><td>5.7+ / 8.0+</td></tr>
+                            <tr><td>Serveur web</td><td>Apache</td><td>2.4+</td></tr>
+                            <tr><td>Frontend</td><td>HTML5, CSS3</td><td>—</td></tr>
+                            <tr><td>Génération PDF</td><td>dompdf</td><td>1.2+</td></tr>
+                            <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="project-section">
+                    <h2>Compétences mobilisées</h2>
+                    <ul>
+                        <li>Développer une application web dynamique avec PHP</li>
+                        <li>Implémenter un système d'authentification sécurisé</li>
+                        <li>Gérer des formulaires et valider les données côté serveur</li>
+                        <li>Manipuler une base de données MySQL</li>
+                        <li>Générer des documents PDF dynamiques</li>
+                        <li>Appliquer les bonnes pratiques de sécurité web</li>
+                        <li>Utiliser Git pour le versioning</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        <p>Projet BTS SIO SLAM — Denys Lyulchak</p>
+        <a href="../index.html#projects">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GarageMoto — Application JavaFX de gestion de garage moto : clients, rendez-vous, réparations, pièces et messagerie interne. Projet BTS SIO SLAM par Denys.">
+    <title>GarageMoto — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="project-page-header">
+        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html#projects" class="back-btn">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <div class="project-meta">
+                    <ul class="tech-tags">
+                        <li>Java</li>
+                        <li>JavaFX</li>
+                        <li>MySQL</li>
+                        <li>Maven</li>
+                        <li>JDBC</li>
+                        <li>MVC</li>
+                    </ul>
+                    <a href="https://github.com/PlumCreativ/GarageMoto" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i class='bx bxl-github' aria-hidden="true"></i> Voir sur GitHub
+                    </a>
+                </div>
+                <h1>GarageMoto</h1>
+                <p class="project-subtitle">Application de gestion complète pour garage moto — Clients, rendez-vous, réparations et messagerie interne — Projet BTS SIO SLAM</p>
+            </div>
+            <div class="project-hero-img">
+                <img src="../img/GarageMoto.png" alt="Capture d'écran de l'application GarageMoto" loading="eager">
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div class="project-content">
+            <div class="project-sections">
+
+                <div class="project-section">
+                    <h2>À propos</h2>
+                    <p>
+                        <strong>GarageMoto</strong> est une application de gestion complète pour garage moto
+                        développée en <strong>Java avec JavaFX</strong>. Elle couvre l'ensemble des besoins
+                        opérationnels d'un garage : enregistrement des clients, planification des rendez-vous,
+                        suivi des réparations avec gestion des pièces détachées, et communication interne entre employés.
+                    </p>
+                    <p>
+                        Développée dans le cadre du <strong>BTS SIO (Services Informatiques aux Organisations)</strong>,
+                        spécialité SLAM — Solutions Logicielles et Applications Métier.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h2>Fonctionnalités</h2>
+
+                    <h3>Gestion des clients</h3>
+                    <ul>
+                        <li>Création de fiches clients : nom, prénom, email, téléphone, adresse postale</li>
+                        <li>Modification et suppression avec confirmation</li>
+                        <li>Tableau interactif (<code>TableView</code>) avec tri, filtrage et recherche rapide</li>
+                    </ul>
+
+                    <h3>Gestion des rendez-vous</h3>
+                    <ul>
+                        <li>Planification avec association client automatique, choix date/heure et type de réparation</li>
+                        <li>Ajout de commentaires et motifs de visite</li>
+                        <li>Historique complet des rendez-vous passés et futurs</li>
+                        <li>Modification et annulation de rendez-vous</li>
+                    </ul>
+
+                    <h3>Réparations et pièces détachées</h3>
+                    <ul>
+                        <li>Enregistrement des pièces : référence, désignation, type, prix unitaire</li>
+                        <li>Suivi des coûts de réparation en temps réel</li>
+                        <li>Traçabilité complète des pièces utilisées par réparation</li>
+                        <li>Statistiques et rapports sur les interventions</li>
+                    </ul>
+
+                    <h3>Messagerie interne</h3>
+                    <ul>
+                        <li>Zone de messages pour la communication entre employés du garage</li>
+                        <li>Notes et points importants à documenter</li>
+                        <li>Notifications d'alertes pour l'équipe</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Interface utilisateur</h2>
+                    <p>
+                        L'application propose 5 écrans principaux construits avec <strong>JavaFX + FXML</strong> :
+                        connexion, gestion des clients, rendez-vous, réparations et messagerie interne.
+                        Les interfaces utilisent un thème CSS personnalisé, des tableaux interactifs avec tri et
+                        filtrage, ainsi qu'une validation des formulaires en temps réel.
+                    </p>
+                    <ul>
+                        <li>Thème cohérent avec CSS personnalisé</li>
+                        <li>Boutons d'action clairs : Ajouter, Modifier, Supprimer, Enregistrer, Annuler</li>
+                        <li>Navigation au clavier</li>
+                        <li>Gestion des rôles : <code>ADMIN</code>, <code>MECANICIEN</code>, <code>RECEPTION</code></li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Architecture</h2>
+                    <p>
+                        Le projet suit le pattern <strong>MVC + DAO</strong> (Model-View-Controller + Data Access Object),
+                        assurant une séparation stricte des responsabilités entre la vue FXML, les contrôleurs
+                        d'événements et la couche d'accès aux données.
+                    </p>
+                    <ul>
+                        <li><strong>Vue</strong> — fichiers FXML + CSS : définition déclarative des interfaces</li>
+                        <li><strong>Contrôleur</strong> — classes annotées <code>@FXML</code> : gestion des événements et logique de présentation</li>
+                        <li><strong>Modèle</strong> — classes métier : <code>Client</code>, <code>RendezVous</code>, <code>Piece</code>, <code>Reparation</code>, <code>Utilisateur</code></li>
+                        <li><strong>DAO</strong> — abstraction de la base de données : <code>ClientDAO</code>, <code>RendezVousDAO</code>, <code>PieceDAO</code>…</li>
+                        <li><strong>Singleton</strong> pour la connexion MySQL via <code>DatabaseConnection.java</code></li>
+                        <li><strong>ObservableList</strong> JavaFX pour la mise à jour automatique des tableaux</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Base de données</h2>
+                    <p>
+                        La base MySQL repose sur 5 tables principales avec intégrité référentielle et gestion des rôles :
+                    </p>
+                    <ul>
+                        <li><code>utilisateur</code> — authentification avec rôles (ADMIN, MECANICIEN, RECEPTION), mots de passe hachés</li>
+                        <li><code>client</code> — fiches clients avec coordonnées complètes</li>
+                        <li><code>rendez_vous</code> — planification avec clé étrangère client</li>
+                        <li><code>reparation</code> — interventions liées aux rendez-vous</li>
+                        <li><code>piece</code> — catalogue de pièces avec prix et traçabilité par réparation</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Technologies utilisées</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Technologie</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Langage</td><td>Java</td><td>JDK 17+</td></tr>
+                            <tr><td>Interface graphique</td><td>JavaFX + FXML</td><td>21+</td></tr>
+                            <tr><td>Base de données</td><td>MySQL</td><td>8.0+</td></tr>
+                            <tr><td>Connecteur BD</td><td>MySQL JDBC Connector</td><td>8.0+</td></tr>
+                            <tr><td>Build &amp; dépendances</td><td>Maven</td><td>3.6+</td></tr>
+                            <tr><td>Tests unitaires</td><td>JUnit</td><td>4.13.2</td></tr>
+                            <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="project-section">
+                    <h2>Compétences mobilisées</h2>
+                    <ul>
+                        <li>Développer une application de gestion métier en Java orientée objet</li>
+                        <li>Concevoir et implémenter une interface graphique avec JavaFX et FXML</li>
+                        <li>Appliquer le pattern MVC couplé au pattern DAO pour la séparation des couches</li>
+                        <li>Modéliser et manipuler une base de données relationnelle MySQL (MCD, SQL complet)</li>
+                        <li>Gérer l'authentification avec rôles et hachage des mots de passe</li>
+                        <li>Utiliser Maven pour la gestion des dépendances et du cycle de build</li>
+                        <li>Rédiger des tests unitaires avec JUnit</li>
+                        <li>Versionner un projet avec Git et GitHub</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        <p>Projet BTS SIO SLAM — Denys Lyulchak</p>
+        <a href="../index.html#projects">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </footer>
+
+</body>
+
+</html>

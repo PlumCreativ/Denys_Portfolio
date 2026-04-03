@@ -1,0 +1,294 @@
+/* ========================================
+   Project Detail Page — Denys Portfolio
+   ======================================== */
+
+.project-page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom: .1rem solid rgba(255, 255, 255, 0.06);
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    color: var(--main-color);
+    font-size: 1.5rem;
+    font-weight: 500;
+    transition: gap .3s ease, opacity .3s ease;
+}
+
+.back-btn:hover {
+    gap: 1rem;
+    opacity: .85;
+}
+
+/* ---- Hero ---- */
+.project-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 12rem 9% 6rem;
+    gap: 6rem;
+}
+
+.project-hero-content {
+    flex: 1;
+    max-width: 60rem;
+}
+
+.project-hero-content h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 1.6rem 0 1.2rem;
+    color: var(--text-color);
+}
+
+.project-subtitle {
+    font-size: 1.8rem;
+    color: #9eaab0;
+    line-height: 1.7;
+    margin-bottom: 2.4rem;
+}
+
+.project-hero-img {
+    flex: 1;
+    max-width: 55rem;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    border: .1rem solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.project-hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ---- Meta (tags + GitHub link) ---- */
+.project-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.github-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: .1rem solid rgba(255, 255, 255, 0.1);
+    border-radius: .6rem;
+    padding: .6rem 1.2rem;
+    transition: border-color .3s ease, color .3s ease;
+}
+
+.github-link:hover {
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+
+/* ---- Content sections ---- */
+.project-content {
+    background: var(--second-bg-color);
+    padding: 6rem 9%;
+}
+
+.project-sections {
+    max-width: 90rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.project-section h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--main-color);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: .1rem solid rgba(0, 171, 240, 0.2);
+}
+
+.project-section p {
+    font-size: 1.6rem;
+    color: #c8d6dd;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+}
+
+.project-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    padding: 0;
+}
+
+.project-section ul li {
+    font-size: 1.5rem;
+    color: #c8d6dd;
+    padding-left: 2.4rem;
+    position: relative;
+    line-height: 1.7;
+}
+
+.project-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--main-color);
+    font-weight: 700;
+}
+
+/* ---- Tech table ---- */
+.tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.tech-table th,
+.tech-table td {
+    padding: 1.2rem 1.6rem;
+    text-align: left;
+    border-bottom: .1rem solid rgba(255, 255, 255, 0.06);
+}
+
+.tech-table th {
+    color: var(--main-color);
+    font-weight: 600;
+    background: rgba(0, 171, 240, 0.05);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.3rem;
+    letter-spacing: .05rem;
+}
+
+.tech-table td {
+    color: #c8d6dd;
+}
+
+.tech-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ---- Footer ---- */
+.project-footer {
+    padding: 3rem 9%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    border-top: .1rem solid rgba(255, 255, 255, 0.06);
+}
+
+.project-footer p {
+    font-size: 1.4rem;
+    color: #9eaab0;
+}
+
+.project-footer a {
+    color: var(--main-color);
+    font-size: 1.5rem;
+    font-weight: 500;
+    transition: gap .3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.project-footer a:hover {
+    gap: 1rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 991px) {
+    .project-page-header {
+        padding: 2rem 4%;
+    }
+
+    .project-hero {
+        padding: 12rem 4% 4rem;
+        gap: 3rem;
+    }
+
+    .project-content {
+        padding: 4rem 4%;
+    }
+
+    .project-footer {
+        padding: 3rem 4%;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: auto;
+        padding-top: 10rem;
+    }
+
+    .project-hero-content h1 {
+        font-size: 3.8rem;
+    }
+
+    .project-hero-img {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .project-section h2 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .project-hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .project-subtitle {
+        font-size: 1.6rem;
+    }
+
+    .project-section h2 {
+        font-size: 2rem;
+    }
+
+    .project-section p,
+    .project-section ul li {
+        font-size: 1.4rem;
+    }
+
+    .tech-table th,
+    .tech-table td {
+        padding: .8rem 1rem;
+        font-size: 1.3rem;
+    }
+}

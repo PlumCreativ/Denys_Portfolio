@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LearnIt — Plateforme de gestion des formations en Java/MySQL avec méthode Agile/Scrum. Projet BTS SIO SLAM par Denys.">
+    <title>LearnIt — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="project-page-header">
+        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html#projects" class="back-btn">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <div class="project-meta">
+                    <ul class="tech-tags">
+                        <li>Java</li>
+                        <li>MySQL</li>
+                        <li>Maven</li>
+                        <li>JDBC</li>
+                        <li>Agile/Scrum</li>
+                    </ul>
+                    <a href="https://github.com/Dario-Adg/LearnIt" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i class='bx bxl-github' aria-hidden="true"></i> Voir sur GitHub
+                    </a>
+                </div>
+                <h1>LearnIt</h1>
+                <p class="project-subtitle">Plateforme d'apprentissage en ligne en mode console — Projet collaboratif BTS SIO SLAM (Agile/Scrum)</p>
+            </div>
+            <div class="project-hero-img">
+                <img src="../img/Learnit.png" alt="Capture d'écran de l'application LearnIt" loading="eager">
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div class="project-content">
+            <div class="project-sections">
+
+                <div class="project-section">
+                    <h2>À propos</h2>
+                    <p>
+                        <strong>LearnIt</strong> est une plateforme d'apprentissage en ligne fonctionnant en
+                        <strong>mode console (CLI)</strong>. Elle permet aux formateurs et étudiants de créer,
+                        gérer et suivre des cours de manière efficace via une interface textuelle intuitive.
+                    </p>
+                    <p>
+                        Ce projet a été développé <strong>en groupe</strong> avec la <strong>méthode Agile (Scrum)</strong>,
+                        apportant une dimension collaborative et professionnelle. Développé en BTS SIO SLAM, spécialité
+                        SLAM — Solutions Logicielles et Applications Métier.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h2>Fonctionnalités</h2>
+                    <ul>
+                        <li>Authentification multi-rôles : Étudiant, Formateur, Administrateur</li>
+                        <li>Création et structuration de cours (modules, leçons, ressources)</li>
+                        <li>Suivi de la progression des étudiants (tableau de bord personnalisé)</li>
+                        <li>Évaluations et quiz intégrés avec notation automatique</li>
+                        <li>Gestion des inscriptions et des groupes d'apprenants</li>
+                        <li>Rapports formateur : statistiques, taux de réussite, analyse temporelle</li>
+                        <li>Administration complète : approbation de cours, gestion des utilisateurs</li>
+                        <li>Navigation au clavier intuitive avec menus contextuels selon le rôle</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Architecture MVC</h2>
+                    <p>
+                        Le projet suit l'architecture <strong>MVC (Model-View-Controller)</strong> adaptée
+                        à une application console. Chaque couche est clairement séparée pour garantir
+                        la maintenabilité et la testabilité du code.
+                    </p>
+                    <ul>
+                        <li><strong>View (Console)</strong> — Affichage textuel, saisie utilisateur, menus ASCII</li>
+                        <li><strong>Controller</strong> — Logique métier, coordination des composants</li>
+                        <li><strong>Model</strong> — Entités métier, accès base de données via JDBC</li>
+                        <li>Gestion de projet Maven avec dépendances centralisées (pom.xml)</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Méthode Agile</h2>
+                    <p>
+                        Le projet a été réalisé avec la méthode <strong>Scrum</strong> en équipe :
+                        sprints itératifs, backlog produit, rétrospectives. Cette approche a permis
+                        d'intégrer les retours en continu et de livrer des fonctionnalités incrémentales.
+                    </p>
+                    <ul>
+                        <li>Organisation en sprints avec backlog priorisé</li>
+                        <li>Daily standups et rétrospectives d'équipe</li>
+                        <li>Collaboration via Git (branches, pull requests, code reviews)</li>
+                        <li>Gestion des exigences métier et arbitrages fonctionnels</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Technologies utilisées</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Technologie</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Langage</td><td>Java</td><td>JDK 17+</td></tr>
+                            <tr><td>Base de données</td><td>MySQL</td><td>8.0+</td></tr>
+                            <tr><td>Connecteur BD</td><td>MySQL JDBC</td><td>8.0.33</td></tr>
+                            <tr><td>Gestion de projet</td><td>Maven</td><td>3.6+</td></tr>
+                            <tr><td>Tests</td><td>JUnit</td><td>4.13.2</td></tr>
+                            <tr><td>Interface</td><td>Console / CLI</td><td>—</td></tr>
+                            <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        <p>Projet BTS SIO SLAM — Développement collaboratif (Agile/Scrum)</p>
+        <a href="../index.html#projects">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </footer>
+
+</body>
+
+</html>

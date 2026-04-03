@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Media Stock — Application mobile-first de gestion d'inventaire informatique avec QR codes. Projet BTS SIO SLAM par Denys.">
+    <title>Media Stock — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="project-page-header">
+        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html#projects" class="back-btn">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <div class="project-meta">
+                    <ul class="tech-tags">
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                        <li>MySQL</li>
+                        <li>Bootstrap 5</li>
+                        <li>Docker</li>
+                        <li>QRCode.js</li>
+                    </ul>
+                    <a href="https://github.com/juklau/MediaStock" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i class='bx bxl-github' aria-hidden="true"></i> Voir sur GitHub
+                    </a>
+                </div>
+                <h1>Media Stock</h1>
+                <p class="project-subtitle">Application web mobile-first de gestion de matériel informatique et audiovisuel — Projet BTS SIO SLAM</p>
+            </div>
+            <div class="project-hero-img">
+                <img src="../img/MediaStock.png" alt="Capture d'écran de l'application Media Stock" loading="eager">
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div class="project-content">
+            <div class="project-sections">
+
+                <div class="project-section">
+                    <h2>À propos</h2>
+                    <p>
+                        <strong>MediaStock</strong> est une application web <strong>mobile-first</strong> de gestion de
+                        matériel informatique et audiovisuel. Elle permet la gestion d'un inventaire complet, le suivi
+                        des prêts et retours, ainsi que l'identification unique de chaque matériel via un
+                        <strong>QR code</strong> scannable depuis smartphone.
+                    </p>
+                    <p>
+                        L'application est entièrement <strong>conteneurisée avec Docker</strong>, garantissant un
+                        environnement reproductible et portable. Développée en BTS SIO SLAM, session 2025,
+                        par Yanis ADIDI — période de réalisation : octobre–novembre 2025.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h2>Fonctionnalités</h2>
+                    <ul>
+                        <li>CRUD complet de l'inventaire : ajout, modification, archivage du matériel</li>
+                        <li>Génération automatique et impression d'un QR code unique par matériel</li>
+                        <li>Enregistrement des prêts par scan QR depuis smartphone (caméra intégrée)</li>
+                        <li>Suivi des retours et clôture automatique des prêts</li>
+                        <li>Blocage des prêts si le matériel est déjà emprunté</li>
+                        <li>Filtrage et recherche dynamique par catégorie, disponibilité et état</li>
+                        <li>Gestion des utilisateurs : rôles étudiant / intervenant</li>
+                        <li>Authentification administrateur avec expiration de session (5 minutes)</li>
+                        <li>Archivage logique (pas de suppression physique)</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Architecture technique</h2>
+                    <p>
+                        Architecture <strong>MVC léger</strong> implémentée en PHP procédural avec Docker Compose.
+                        Le frontend communique avec le backend via des appels <code>fetch()</code> vers une
+                        API REST PHP. Le dossier <code>public/</code> est le DocumentRoot Apache,
+                        protégeant le code métier.
+                    </p>
+                    <ul>
+                        <li>Frontend → fetch() → API PHP (Apache) → PDO → MySQL (Docker volume)</li>
+                        <li>3 services Docker : web (PHP 8.2), mysql (8.0), phpMyAdmin</li>
+                        <li>Modélisation base de données selon la méthode Merise</li>
+                        <li>Connexion PDO centralisée avec variables d'environnement</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Environnement Docker</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Image</th>
+                                <th>Port local</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Application PHP</td><td>php:8.2-apache</td><td>9080</td></tr>
+                            <tr><td>Base de données</td><td>mysql:8.0</td><td>interne</td></tr>
+                            <tr><td>Administration DB</td><td>phpmyadmin:latest</td><td>8082</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="project-section">
+                    <h2>Technologies utilisées</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Technologie</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Backend</td><td>PHP procédural, PDO</td><td>8.2</td></tr>
+                            <tr><td>Base de données</td><td>MySQL</td><td>8.0</td></tr>
+                            <tr><td>Frontend</td><td>HTML5, CSS3, JavaScript ES6+</td><td>—</td></tr>
+                            <tr><td>Framework CSS</td><td>Bootstrap</td><td>5.3.8</td></tr>
+                            <tr><td>Icônes</td><td>FontAwesome</td><td>7.0.1</td></tr>
+                            <tr><td>QR Code</td><td>QRCode.js / html5-qrcode.js</td><td>—</td></tr>
+                            <tr><td>Dates</td><td>Flatpickr</td><td>—</td></tr>
+                            <tr><td>Infrastructure</td><td>Docker / Docker Compose</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        <p>Projet BTS SIO SLAM — Yanis ADIDI (2025) — Contributeur: Denys Lyulchak</p>
+        <a href="../index.html#projects">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </footer>
+
+</body>
+
+</html>

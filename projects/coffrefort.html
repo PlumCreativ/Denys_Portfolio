@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CryptoVault — Coffre-fort numérique sécurisé : API REST PHP avec chiffrement AES-256-GCM et client desktop JavaFX. Projet BTS SIO SLAM par Denys.">
+    <title>CryptoVault — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="project-page-header">
+        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html#projects" class="back-btn">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <div class="project-meta">
+                    <ul class="tech-tags">
+                        <li>Java</li>
+                        <li>JavaFX</li>
+                        <li>PHP</li>
+                        <li>Slim 4</li>
+                        <li>MySQL</li>
+                        <li>Docker</li>
+                        <li>AES-256</li>
+                        <li>JWT</li>
+                    </ul>
+                    <div class="github-links">
+                        <a href="https://github.com/PlumCreativ/coffreFortJava" class="github-link" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-github' aria-hidden="true"></i> Client JavaFX
+                        </a>
+                        <a href="https://github.com/PlumCreativ/coffreFort" class="github-link" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-github' aria-hidden="true"></i> Backend PHP
+                        </a>
+                    </div>
+                </div>
+                <h1>CryptoVault</h1>
+                <p class="project-subtitle">Coffre-fort numérique sécurisé — Backend REST PHP + Client desktop JavaFX — Projet BTS SIO SLAM</p>
+            </div>
+            <div class="project-hero-img">
+                <img src="../img/coffreFort.png" alt="Capture d'écran du client CryptoVault" loading="eager">
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div class="project-content">
+            <div class="project-sections">
+
+                <div class="project-section">
+                    <h2>Vue d'ensemble</h2>
+                    <p>
+                        <strong>CryptoVault</strong> est un système complet de coffre-fort numérique sécurisé
+                        composé de deux parties complémentaires : un <strong>backend REST PHP</strong> assurant
+                        le stockage chiffré des fichiers, et un <strong>client desktop JavaFX</strong> offrant
+                        une interface native multi-plateforme pour gérer l'espace de stockage.
+                    </p>
+                    <p>
+                        Le projet met en œuvre des techniques avancées de sécurité : chiffrement
+                        <strong>AES-256-GCM</strong> au repos avec enveloppe de clés, authentification
+                        <strong>JWT</strong>, versionnage automatique des fichiers, partages sécurisés
+                        avec tokens signés et audit complet des accès.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h2>Backend — API REST PHP</h2>
+                    <p>
+                        L'API REST est construite avec <strong>Slim Framework 4.12</strong> et <strong>Medoo 2.2</strong>
+                        et expose 38 routes couvrant l'ensemble des opérations métier.
+                    </p>
+                    <ul>
+                        <li>Chiffrement <strong>AES-256-GCM</strong> au repos avec enveloppe de clés (KEK)</li>
+                        <li>Authentification JWT via Firebase PHP-JWT avec middleware dédié</li>
+                        <li>Organisation hiérarchique des dossiers avec contraintes CASCADE</li>
+                        <li>Versionnage automatique : checksum SHA-256, IV et auth tag par version</li>
+                        <li>Partages sécurisés : token base64url, expiration, limitation d'usages, révocation</li>
+                        <li>Gestion des quotas utilisateur avec blocage automatique à 100 %</li>
+                        <li>Table <code>audit_logs</code> pour traçabilité complète (IP, user-agent, action)</li>
+                        <li>Rôle administrateur : gestion des utilisateurs, suppression avec nettoyage CASCADE</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Client — Application Desktop JavaFX</h2>
+                    <p>
+                        Le client lourd <strong>JavaFX 21</strong> communique avec l'API REST via
+                        <strong>OkHttp 4.12</strong> et offre une interface native réactive.
+                    </p>
+                    <ul>
+                        <li>Connexion sécurisée avec surveillance automatique de session JWT (toutes les minutes)</li>
+                        <li>Déconnexion automatique à l'expiration du token avec redirection</li>
+                        <li>Arborescence hiérarchique de dossiers (<code>TreeView</code>) avec menu contextuel</li>
+                        <li>Upload / download avec barre de progression, support fichiers volumineux (streaming)</li>
+                        <li>Historique complet des versions : checksum SHA-256, téléchargement sélectif</li>
+                        <li>Gestion des partages : création, expiration, limitation d'usages, révocation</li>
+                        <li>Barre de quota avec alertes visuelles à 80 % (orange) et 90 % (rouge)</li>
+                        <li>Panneau d'administration : gestion des quotas et des utilisateurs</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Architecture</h2>
+                    <p>
+                        Les deux composants suivent le pattern <strong>MVC</strong>. L'API REST utilise
+                        des <em>Repositories</em> Medoo en couche d'accès aux données ; le client JavaFX
+                        sépare les vues FXML, les contrôleurs annotés <code>@FXML</code> et les modèles POJO
+                        mappés via Jackson.
+                    </p>
+                    <ul>
+                        <li>Backend : AppFactory Slim → Middlewares (CORS, JWT, Error) → Routes → Controllers → Repositories → Medoo → MySQL</li>
+                        <li>Client : Interface FXML → Contrôleur @FXML → <code>ApiClient</code> (OkHttp) → API REST</li>
+                        <li>Stockage physique chiffré dans <code>storage/files/{user_id}/</code></li>
+                        <li>Base de données avec triggers et contraintes CASCADE complètes</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Technologies utilisées</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Technologie</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Client desktop</td><td>Java + JavaFX</td><td>17+ / 21.0.2</td></tr>
+                            <tr><td>Build client</td><td>Maven</td><td>3.8+</td></tr>
+                            <tr><td>Client HTTP</td><td>OkHttp</td><td>4.12.0</td></tr>
+                            <tr><td>Sérialisation JSON</td><td>Jackson</td><td>2.17.2</td></tr>
+                            <tr><td>Backend API</td><td>PHP + Slim Framework</td><td>8.2+ / 4.12</td></tr>
+                            <tr><td>ORM micro</td><td>Medoo</td><td>2.2</td></tr>
+                            <tr><td>Authentification</td><td>Firebase PHP-JWT</td><td>6.11</td></tr>
+                            <tr><td>Chiffrement</td><td>AES-256-GCM (OpenSSL)</td><td>—</td></tr>
+                            <tr><td>Base de données</td><td>MySQL</td><td>8.0</td></tr>
+                            <tr><td>Containerisation</td><td>Docker + Docker Compose</td><td>—</td></tr>
+                            <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="project-section">
+                    <h2>Sécurité</h2>
+                    <ul>
+                        <li>Chiffrement <strong>AES-256-GCM</strong> : chaque version de fichier possède son propre IV et auth tag</li>
+                        <li>Enveloppe de clés : la clé de chiffrement est elle-même chiffrée avec une KEK (Key Encryption Key)</li>
+                        <li>Tokens JWT : vérification d'expiration côté client et côté serveur, renouvellement automatique</li>
+                        <li>Hachage des mots de passe : <code>password_hash()</code> / <code>password_verify()</code></li>
+                        <li>Tokens de partage : base64url (~43 caractères), non devinables</li>
+                        <li>Interdiction de supprimer la dernière version d'un fichier</li>
+                        <li>Protection contre l'auto-suppression administrateur</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Compétences mobilisées</h2>
+                    <ul>
+                        <li>Concevoir et implémenter une API REST sécurisée avec authentification JWT</li>
+                        <li>Appliquer le chiffrement symétrique AES-256-GCM sur des données au repos</li>
+                        <li>Développer une application desktop multi-plateforme avec JavaFX et Maven</li>
+                        <li>Mettre en œuvre le pattern MVC dans deux contextes techniques différents</li>
+                        <li>Gérer le versionnage de fichiers avec intégrité SHA-256</li>
+                        <li>Containeriser un backend avec Docker et Docker Compose</li>
+                        <li>Concevoir un modèle de données relationnel avec contraintes CASCADE</li>
+                        <li>Implémenter un système d'audit et de traçabilité complet</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        <p>Projet BTS SIO SLAM — Denys Lyulchak</p>
+        <a href="../index.html#projects">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </footer>
+
+</body>
+
+</html>

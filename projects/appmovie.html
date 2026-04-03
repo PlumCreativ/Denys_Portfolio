@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AppMoovies — Application Java de gestion de films avec MyBatis ORM et MySQL. Projet BTS SIO SLAM par Denys.">
+    <title>AppMoovies — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header class="project-page-header">
+        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html#projects" class="back-btn">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <div class="project-meta">
+                    <ul class="tech-tags">
+                        <li>Java</li>
+                        <li>MyBatis</li>
+                        <li>MySQL</li>
+                        <li>Maven</li>
+                    </ul>
+                    <a href="https://github.com/PlumCreativ/AppMoovies" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i class='bx bxl-github' aria-hidden="true"></i> Voir sur GitHub
+                    </a>
+                </div>
+                <h1>AppMoovies</h1>
+                <p class="project-subtitle">Application Java de gestion de collection de films — ORM MyBatis + MySQL — Projet BTS SIO SLAM</p>
+            </div>
+            <div class="project-hero-img">
+                <img src="../img/AppMovie.png" alt="Capture d'écran de l'application AppMoovies" loading="eager">
+            </div>
+        </section>
+
+        <!-- Content -->
+        <div class="project-content">
+            <div class="project-sections">
+
+                <div class="project-section">
+                    <h2>À propos</h2>
+                    <p>
+                        <strong>AppMoovies</strong> est une application Java permettant de gérer une collection
+                        de films. Elle s'appuie sur une base de données <strong>MySQL</strong> et utilise
+                        <strong>MyBatis 3.5</strong> comme framework de persistence pour simplifier les
+                        interactions SQL-objet via des fichiers de mapping XML.
+                    </p>
+                    <p>
+                        Ce projet illustre la maîtrise de l'ORM MyBatis, du pattern DAO en Java et de la gestion
+                        de dépendances avec Maven dans un contexte de développement applicatif métier.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h2>Fonctionnalités</h2>
+                    <ul>
+                        <li>Gestion CRUD d'une collection de films (création, lecture, modification, suppression)</li>
+                        <li>Mapping SQL-objet via fichiers XML MyBatis (<code>mapper/</code>)</li>
+                        <li>Accès à la base de données MySQL via le connecteur JDBC MyBatis</li>
+                        <li>Couche service séparant la logique métier des accès aux données</li>
+                        <li>Configuration de la connexion centralisée dans <code>mybatis-config.xml</code></li>
+                        <li>Pool de connexions JDBC géré automatiquement par MyBatis</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Architecture</h2>
+                    <p>
+                        Le projet suit une architecture en couches avec séparation stricte des responsabilités :
+                    </p>
+                    <ul>
+                        <li><strong>Model</strong> — entités Java (<code>Film</code>, <code>Genre</code>…) représentant les tables MySQL</li>
+                        <li><strong>DAO</strong> — interfaces MyBatis dont les implémentations sont générées automatiquement à partir des fichiers XML de mapping</li>
+                        <li><strong>Mapper XML</strong> — fichiers <code>*.xml</code> contenant les requêtes SQL paramétrées et les résultats mappés</li>
+                        <li><strong>Service</strong> — logique métier orchestrant les appels DAO</li>
+                        <li><strong>Main</strong> — point d'entrée de l'application</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h2>Technologies utilisées</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Technologie</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Langage</td><td>Java</td><td>19</td></tr>
+                            <tr><td>Build &amp; dépendances</td><td>Maven</td><td>3.x</td></tr>
+                            <tr><td>ORM / Persistence</td><td>MyBatis</td><td>3.5.13</td></tr>
+                            <tr><td>Connecteur BDD</td><td>MySQL Connector/J</td><td>8.0.33</td></tr>
+                            <tr><td>Base de données</td><td>MySQL</td><td>8.0+</td></tr>
+                            <tr><td>Annotations</td><td>JetBrains Annotations</td><td>RELEASE</td></tr>
+                            <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="project-section">
+                    <h2>Compétences mobilisées</h2>
+                    <ul>
+                        <li>Utiliser un ORM (MyBatis) pour abstraire les accès SQL dans une application Java</li>
+                        <li>Écrire des fichiers de mapping XML MyBatis (requêtes paramétrées, resultMaps)</li>
+                        <li>Structurer un projet Java en couches : Model, DAO, Service, Main</li>
+                        <li>Gérer les dépendances et le cycle de build avec Maven (<code>pom.xml</code>)</li>
+                        <li>Configurer une connexion à MySQL avec pool JDBC via <code>mybatis-config.xml</code></li>
+                        <li>Appliquer le pattern DAO pour découpler la logique métier de la persistence</li>
+                        <li>Versionner un projet avec Git et GitHub</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        <p>Projet BTS SIO SLAM — Denys Lyulchak</p>
+        <a href="../index.html#projects">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </footer>
+
+</body>
+
+</html>

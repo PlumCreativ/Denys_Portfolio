@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Veille Automatique Scraping + IA — Pipeline Python combinant web scraping et modèles NLP pour une surveillance technologique intelligente. Par Denys Lyulchak.">
+    <title>Veille Automatique : Scraping + IA — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/veille-page.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body class="veille-page-body">
+
+    <!-- ── HEADER ── -->
+    <header class="vp-header" role="banner">
+        <a href="../index.html" class="logo" aria-label="Retour à l'accueil">Denys.</a>
+        <a href="../index.html#veille" class="vp-back-btn">
+            <i class="bx bx-left-arrow-alt" aria-hidden="true"></i> Retour
+        </a>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ═══════════════════════════════════════════════════
+             HERO
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-hero" aria-labelledby="vp-hero-title">
+
+            <div class="vp-hero-content">
+                <div class="vp-hero-meta">
+                    <span class="vp-badge">Veille Technologique</span>
+                    <span class="vp-badge vp-badge--outline">Projet Python Avancé</span>
+                    <a href="../src/Veille_Informatique.pdf" class="vp-download-btn" download
+                       aria-label="Télécharger la veille en PDF">
+                        <i class="bx bx-download" aria-hidden="true"></i> PDF
+                    </a>
+                </div>
+                <h1 id="vp-hero-title">
+                    Veille Automatique<br>
+                    <span>Scraping + IA</span>
+                </h1>
+                <p class="vp-hero-subtitle">
+                    Surveillance technologique intelligente et automatisée — combinez web scraping et IA pour une veille informatique efficace en Python.
+                </p>
+                <ul class="vp-tags" aria-label="Technologies">
+                    <li>Python</li><li>NLP</li><li>Scrapy</li><li>Selenium</li>
+                    <li>Transformers</li><li>spaCy</li><li>FastAPI</li><li>Docker</li>
+                </ul>
+            </div>
+
+            <div class="vp-hero-visual" aria-hidden="true">
+                <div class="vp-orbit">
+                    <span class="vp-orb vp-orb-center"><i class="bx bx-bot"></i></span>
+                    <span class="vp-orb vp-orb-1"><i class="bx bx-search-alt-2"></i></span>
+                    <span class="vp-orb vp-orb-2"><i class="bx bxl-python"></i></span>
+                    <span class="vp-orb vp-orb-3"><i class="bx bx-data"></i></span>
+                    <span class="vp-orb vp-orb-4"><i class="bx bx-brain"></i></span>
+                    <span class="vp-orb vp-orb-5"><i class="bx bx-bell"></i></span>
+                    <span class="vp-orb vp-orb-6"><i class="bx bx-trending-up"></i></span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             CONTEXTE ET ENJEUX
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--light reveal" aria-labelledby="vp-context-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-context-title" class="vp-section-title">
+                    <span class="vp-title-num">01</span> Contexte et Enjeux
+                </h2>
+                <div class="vp-cards-3">
+                    <div class="vp-card reveal-child" style="--d:0">
+                        <i class="bx bx-bar-chart-alt-2 vp-card-icon" aria-hidden="true"></i>
+                        <h3>Volume de Données</h3>
+                        <p>L'explosion exponentielle des données technologiques rend la veille manuelle obsolète et inefficace.</p>
+                    </div>
+                    <div class="vp-card reveal-child" style="--d:1">
+                        <i class="bx bx-bulb vp-card-icon" aria-hidden="true"></i>
+                        <h3>Intelligence Requise</h3>
+                        <p>Filtrer et interpréter les avancées de l'IA nécessite une compréhension profonde et une analyse intelligente.</p>
+                    </div>
+                    <div class="vp-card reveal-child" style="--d:2">
+                        <i class="bx bx-cog vp-card-icon" aria-hidden="true"></i>
+                        <h3>Automatisation</h3>
+                        <p>L'automatisation est la clé pour rester à la pointe des innovations sans y consacrer des heures manuelles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             DÉFINITION
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--dark reveal" aria-labelledby="vp-definition-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-definition-title" class="vp-section-title">
+                    <span class="vp-title-num">02</span> Qu'est-ce que le Scraping + IA ?
+                </h2>
+                <div class="vp-definition-split">
+                    <div class="vp-def-block reveal-child" style="--d:0">
+                        <div class="vp-def-header">
+                            <i class="bx bx-globe" aria-hidden="true"></i>
+                            <h3>Web Scraping</h3>
+                        </div>
+                        <p>Extraction automatique et structurée de données depuis des sources web (articles, forums, documentations). Utilisation de bibliothèques comme <strong>BeautifulSoup</strong>, <strong>Scrapy</strong>, <strong>Selenium</strong>.</p>
+                    </div>
+                    <div class="vp-def-divider" aria-hidden="true">
+                        <i class="bx bx-plus-circle"></i>
+                    </div>
+                    <div class="vp-def-block reveal-child" style="--d:1">
+                        <div class="vp-def-header">
+                            <i class="bx bx-brain" aria-hidden="true"></i>
+                            <h3>Intelligence Artificielle</h3>
+                        </div>
+                        <p>Analyse, filtrage et classement automatique des données collectées. Modèles <strong>NLP</strong> pour résumés et extraction de concepts clés. Classement par pertinence et tendances.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             POINTS FORTS
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--light reveal" aria-labelledby="vp-strengths-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-strengths-title" class="vp-section-title">
+                    <span class="vp-title-num">03</span> Points Forts du Projet
+                </h2>
+                <div class="vp-cards-4">
+                    <div class="vp-strength-card reveal-child" style="--d:0">
+                        <div class="vp-strength-icon"><i class="bx bx-infinite" aria-hidden="true"></i></div>
+                        <h3>Automatisation Complète</h3>
+                        <p>Pipeline end-to-end qui collecte, analyse et distribue les informations sans intervention manuelle, 24/7 de façon continue.</p>
+                    </div>
+                    <div class="vp-strength-card reveal-child" style="--d:1">
+                        <div class="vp-strength-icon"><i class="bx bx-brain" aria-hidden="true"></i></div>
+                        <h3>Intelligence Avancée</h3>
+                        <p>Modèles NLP pour extraction de concepts, NER pour identification d'entités, et classification multi-label des contenus pertinents.</p>
+                    </div>
+                    <div class="vp-strength-card reveal-child" style="--d:2">
+                        <div class="vp-strength-icon"><i class="bx bxl-python" aria-hidden="true"></i></div>
+                        <h3>Scalabilité Python</h3>
+                        <p>Architecture modulaire et extensible, compatible avec les frameworks modernes (Scrapy, FastAPI, TensorFlow).</p>
+                    </div>
+                    <div class="vp-strength-card reveal-child" style="--d:3">
+                        <div class="vp-strength-icon"><i class="bx bx-trending-up" aria-hidden="true"></i></div>
+                        <h3>Détection de Tendances</h3>
+                        <p>Identification des patterns et tendances émergentes en temps réel, permettant une anticipation des évolutions technologiques.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             ARCHITECTURE PIPELINE
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--dark reveal" aria-labelledby="vp-pipeline-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-pipeline-title" class="vp-section-title">
+                    <span class="vp-title-num">04</span> Architecture et Flux de Données
+                </h2>
+                <div class="vp-pipeline" role="list">
+                    <div class="vp-pipeline-step reveal-child" role="listitem" style="--d:0">
+                        <span class="vp-step-num" aria-hidden="true">1</span>
+                        <div>
+                            <h3>Collecte</h3>
+                            <p>Web scraping via Scrapy et Selenium des multiples sources (blogs, GitHub, ArXiv)</p>
+                        </div>
+                    </div>
+                    <div class="vp-pipeline-arrow" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></div>
+                    <div class="vp-pipeline-step reveal-child" role="listitem" style="--d:1">
+                        <span class="vp-step-num" aria-hidden="true">2</span>
+                        <div>
+                            <h3>Nettoyage</h3>
+                            <p>Prétraitement des données, normalisation et structuration</p>
+                        </div>
+                    </div>
+                    <div class="vp-pipeline-arrow" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></div>
+                    <div class="vp-pipeline-step reveal-child" role="listitem" style="--d:2">
+                        <span class="vp-step-num" aria-hidden="true">3</span>
+                        <div>
+                            <h3>Analyse IA</h3>
+                            <p>NLP, classification, extraction d'entités nommées</p>
+                        </div>
+                    </div>
+                    <div class="vp-pipeline-arrow" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></div>
+                    <div class="vp-pipeline-step reveal-child" role="listitem" style="--d:3">
+                        <span class="vp-step-num" aria-hidden="true">4</span>
+                        <div>
+                            <h3>Classement</h3>
+                            <p>Scoring de pertinence basé sur l'IA et ML</p>
+                        </div>
+                    </div>
+                    <div class="vp-pipeline-arrow" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></div>
+                    <div class="vp-pipeline-step reveal-child" role="listitem" style="--d:4">
+                        <span class="vp-step-num" aria-hidden="true">5</span>
+                        <div>
+                            <h3>Distribution</h3>
+                            <p>Alertes et rapports automatisés</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             PERFORMANCE
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--light reveal" aria-labelledby="vp-perf-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-perf-title" class="vp-section-title">
+                    <span class="vp-title-num">05</span> Capacités et Performance
+                </h2>
+                <div class="vp-metrics">
+                    <div class="vp-metric reveal-child" style="--d:0">
+                        <span class="vp-metric-value" data-target="88">0</span>
+                        <span class="vp-metric-unit">%</span>
+                        <h3>Précision Moyenne</h3>
+                        <p>De pertinence dans la classification automatique des contenus, validée par experts du domaine technologique.</p>
+                    </div>
+                    <div class="vp-metric reveal-child" style="--d:1">
+                        <span class="vp-metric-value vp-metric-text">&lt; 30</span>
+                        <span class="vp-metric-unit">min</span>
+                        <h3>Latence Minimale</h3>
+                        <p>Publication des insights après détection d'une actualité majeure dans le domaine IA.</p>
+                    </div>
+                    <div class="vp-metric reveal-child" style="--d:2">
+                        <span class="vp-metric-value" data-target="150">0</span>
+                        <span class="vp-metric-unit">+</span>
+                        <h3>Alertes / mois</h3>
+                        <p>Alertes pertinentes générées automatiquement sur les frameworks et outils IA.</p>
+                    </div>
+                    <div class="vp-metric reveal-child" style="--d:3">
+                        <span class="vp-metric-value" data-target="15">0</span>
+                        <span class="vp-metric-unit">h</span>
+                        <h3>Gain de Temps</h3>
+                        <p>Économisées par utilisateur et par mois grâce aux rapports synthétisés intelligents.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             STACK TECHNOLOGIQUE
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--dark reveal" aria-labelledby="vp-stack-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-stack-title" class="vp-section-title">
+                    <span class="vp-title-num">06</span> Stack Technologique
+                </h2>
+                <div class="vp-stack-grid">
+                    <div class="vp-stack-cat reveal-child" style="--d:0">
+                        <h3><i class="bx bx-globe" aria-hidden="true"></i> Scraping</h3>
+                        <ul>
+                            <li><span>Scrapy</span><em>Framework principal</em></li>
+                            <li><span>Selenium</span><em>Rendu JavaScript</em></li>
+                            <li><span>BeautifulSoup</span><em>Parsing HTML</em></li>
+                            <li><span>Requests</span><em>HTTP client</em></li>
+                        </ul>
+                    </div>
+                    <div class="vp-stack-cat reveal-child" style="--d:1">
+                        <h3><i class="bx bx-brain" aria-hidden="true"></i> IA / ML</h3>
+                        <ul>
+                            <li><span>Transformers</span><em>HuggingFace</em></li>
+                            <li><span>spaCy</span><em>NLP pipeline</em></li>
+                            <li><span>scikit-learn</span><em>Classification</em></li>
+                            <li><span>BERT</span><em>Embeddings</em></li>
+                        </ul>
+                    </div>
+                    <div class="vp-stack-cat reveal-child" style="--d:2">
+                        <h3><i class="bx bx-server" aria-hidden="true"></i> Infrastructure</h3>
+                        <ul>
+                            <li><span>FastAPI</span><em>API REST</em></li>
+                            <li><span>PostgreSQL</span><em>Stockage</em></li>
+                            <li><span>Redis</span><em>Cache</em></li>
+                            <li><span>Docker</span><em>Déploiement</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             CAS D'USAGE
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--light reveal" aria-labelledby="vp-usecases-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-usecases-title" class="vp-section-title">
+                    <span class="vp-title-num">07</span> Cas d'Usage et Résultats
+                </h2>
+                <div class="vp-cards-3">
+                    <div class="vp-usecase reveal-child" style="--d:0">
+                        <i class="bx bx-code-block" aria-hidden="true"></i>
+                        <h3>Suivi des Frameworks IA</h3>
+                        <p>Identification des papiers de recherche breakthrough et contributions open-source révolutionnaires.</p>
+                        <span class="vp-result-pill">150+ alertes/mois</span>
+                    </div>
+                    <div class="vp-usecase reveal-child" style="--d:1">
+                        <i class="bx bx-bell" aria-hidden="true"></i>
+                        <h3>Alertes Innovantes</h3>
+                        <p>Détection automatique des évolutions majeures (versions, fonctionnalités) dans PyTorch, TensorFlow, JAX.</p>
+                        <span class="vp-result-pill">94% breaking changes</span>
+                    </div>
+                    <div class="vp-usecase reveal-child" style="--d:2">
+                        <i class="bx bx-file-find" aria-hidden="true"></i>
+                        <h3>Rapports Synthétisés</h3>
+                        <p>Résumés intelligents des tendances mensuelles et roadmaps technologiques générés automatiquement.</p>
+                        <span class="vp-result-pill">15h/mois économisées</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             DÉFIS & SOLUTIONS
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--dark reveal" aria-labelledby="vp-challenges-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-challenges-title" class="vp-section-title">
+                    <span class="vp-title-num">08</span> Défis Relevés et Solutions
+                </h2>
+                <div class="vp-challenges">
+                    <div class="vp-challenge reveal-child" style="--d:0">
+                        <span class="vp-challenge-num" aria-hidden="true">01</span>
+                        <div>
+                            <h3>Volume Massif</h3>
+                            <p>Pipeline asynchrone et caching intelligent (Redis) pour traiter le flux continu de données sans dégradation des performances.</p>
+                        </div>
+                    </div>
+                    <div class="vp-challenge reveal-child" style="--d:1">
+                        <span class="vp-challenge-num" aria-hidden="true">02</span>
+                        <div>
+                            <h3>Qualité des Sources</h3>
+                            <p>Filtrage IA précoce et classement par pertinence pour réduire le bruit et garantir la fiabilité de chaque source.</p>
+                        </div>
+                    </div>
+                    <div class="vp-challenge reveal-child" style="--d:2">
+                        <span class="vp-challenge-num" aria-hidden="true">03</span>
+                        <div>
+                            <h3>Contexte Technologique</h3>
+                            <p>Validation multi-source et score de fiabilité basé sur l'historique pour contextualiser chaque information détectée.</p>
+                        </div>
+                    </div>
+                    <div class="vp-challenge reveal-child" style="--d:3">
+                        <span class="vp-challenge-num" aria-hidden="true">04</span>
+                        <div>
+                            <h3>Latence d'Analyse</h3>
+                            <p>Fine-tuning des modèles NLP sur corpus domaine-spécifique pour réduire significativement le temps d'inférence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             CADRE LÉGAL
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--light reveal" aria-labelledby="vp-legal-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-legal-title" class="vp-section-title">
+                    <span class="vp-title-num">09</span> Cadre Légal et Éthique
+                </h2>
+                <div class="vp-legal-grid">
+                    <div class="vp-legal-item reveal-child" style="--d:0">
+                        <span class="vp-legal-num" aria-hidden="true">1</span>
+                        <div>
+                            <h3>Protection des bases de données (UE)</h3>
+                            <p>Le droit européen protège les bases de données contre l'extraction ou la réutilisation substantielle de leur contenu.</p>
+                        </div>
+                    </div>
+                    <div class="vp-legal-item reveal-child" style="--d:1">
+                        <span class="vp-legal-num" aria-hidden="true">2</span>
+                        <div>
+                            <h3>Données personnelles (RGPD)</h3>
+                            <p>Les données accessibles publiquement peuvent rester des données personnelles. Leur collecte nécessite une base légale et un objectif défini.</p>
+                        </div>
+                    </div>
+                    <div class="vp-legal-item reveal-child" style="--d:2">
+                        <span class="vp-legal-num" aria-hidden="true">3</span>
+                        <div>
+                            <h3>Conditions d'utilisation</h3>
+                            <p>De nombreux sites interdisent explicitement le scraping dans leurs CGU. Ignorer ces règles peut entraîner des poursuites ou un blocage technique.</p>
+                        </div>
+                    </div>
+                    <div class="vp-legal-item reveal-child" style="--d:3">
+                        <span class="vp-legal-num" aria-hidden="true">4</span>
+                        <div>
+                            <h3>Bonnes pratiques</h3>
+                            <ul>
+                                <li>Respecter les fichiers <code>robots.txt</code></li>
+                                <li>Limiter la fréquence des requêtes</li>
+                                <li>Utiliser les API officielles si disponibles</li>
+                                <li>Éviter la collecte de données personnelles sensibles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SOURCES
+        ════════════════════════════════════════════════════ -->
+        <section class="vp-section vp-section--dark reveal" aria-labelledby="vp-sources-title">
+            <div class="vp-section-inner">
+                <h2 id="vp-sources-title" class="vp-section-title">
+                    <span class="vp-title-num">10</span> Sources et Références
+                </h2>
+                <div class="vp-sources-grid">
+                    <div class="vp-source reveal-child" style="--d:0">
+                        <i class="bx bxl-python" aria-hidden="true"></i>
+                        <div>
+                            <h3>Documentation Python</h3>
+                            <p>Python.org — requests, csv, pandas</p>
+                        </div>
+                    </div>
+                    <div class="vp-source reveal-child" style="--d:1">
+                        <i class="bx bx-brain" aria-hidden="true"></i>
+                        <div>
+                            <h3>HuggingFace Transformers</h3>
+                            <p>Pipeline de résumé de texte et embeddings BERT</p>
+                        </div>
+                    </div>
+                    <div class="vp-source reveal-child" style="--d:2">
+                        <i class="bx bx-globe" aria-hidden="true"></i>
+                        <div>
+                            <h3>BeautifulSoup</h3>
+                            <p>Documentation officielle — parsing HTML</p>
+                        </div>
+                    </div>
+                    <div class="vp-source reveal-child" style="--d:3">
+                        <i class="bx bx-book-open" aria-hidden="true"></i>
+                        <div>
+                            <h3>Real Python</h3>
+                            <p>Web Scraping With Python and BeautifulSoup</p>
+                        </div>
+                    </div>
+                    <div class="vp-source reveal-child" style="--d:4">
+                        <i class="bx bx-file-find" aria-hidden="true"></i>
+                        <div>
+                            <h3>Towards Data Science</h3>
+                            <p>Text Summarization Using HuggingFace Transformers</p>
+                        </div>
+                    </div>
+                    <div class="vp-source reveal-child" style="--d:5">
+                        <i class="bx bx-table" aria-hidden="true"></i>
+                        <div>
+                            <h3>pandas</h3>
+                            <p>Documentation — sauvegarde CSV et manipulation de données</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="vp-footer" role="contentinfo">
+        <p>Veille Informatique · Projet Python Avancé · Denys Lyulchak</p>
+        <a href="../index.html#veille" class="vp-back-btn">
+            <i class="bx bx-left-arrow-alt" aria-hidden="true"></i> Retour au portfolio
+        </a>
+    </footer>
+
+    <script src="../js/veille.js"></script>
+
+</body>
+</html>

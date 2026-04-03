@@ -1,56 +1,79 @@
-// toggle icon navbar
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+/* ============================================================
+   script.js — Denys Portfolio
+   Scroll animations via IntersectionObserver (modern & reliable)
+   ============================================================ */
 
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-}
+// ── 1. MOBILE MENU ──────────────────────────────────────────
+const menuIcon = document.querySelector('#menu-icon');
+const navbar   = document.querySelector('.navbar');
 
-// scroll sections
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
+menuIcon.addEventListener('click', () => {
+    const isOpen = navbar.classList.toggle('active');
+    menuIcon.classList.toggle('bx-x', isOpen);
+    menuIcon.setAttribute('aria-expanded', isOpen);
+});
 
-window.onscroll = () => {
-    sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
+// ── 2. STICKY HEADER + CLOSE MENU ON SCROLL ─────────────────
+const header = document.querySelector('header');
 
-        if (top >= offset && top < offset + height) {
-            // active navbar links
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
-            });
-            // active sections for animation on scroll
-            sec.classList.add('show-animate');
-        }
-        // if want to use animation that repeats on scroll use this
-        else {
-            sec.classList.remove('show-animate');
-        }
-    });
-
-    // sticky header
-    let header = document.querySelector('header');
-
+window.addEventListener('scroll', () => {
     header.classList.toggle('sticky', window.scrollY > 100);
 
-    // remove toggle icon and navbar when click navbar links (scroll)
-    menuIcon.classList.remove('bx-x');
-    navbar.classList.remove('active');
-
-    // animation footer on scroll
-    let footer = document.querySelector('footer');
-    let scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    let scrolled = window.scrollY;
-
-    if (Math.ceil(scrolled) === scrollable) {
-        footer.classList.add('show-animate');
+    // Close mobile menu when user scrolls
+    if (navbar.classList.contains('active')) {
+        navbar.classList.remove('active');
+        menuIcon.classList.remove('bx-x');
+        menuIcon.setAttribute('aria-expanded', 'false');
     }
-    else {
-        footer.classList.remove('show-animate');
-    }
+}, { passive: true });
+
+// ── 3. SECTION REVEAL + NAV HIGHLIGHT ───────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('header nav a');
+
+// Trigger home animation immediately (no observer delay, avoids overlay flash)
+const homeSection = document.querySelector('section.home');
+if (homeSection) homeSection.classList.add('show-animate');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const sec = entry.target;
+
+        if (entry.isIntersecting) {
+            sec.classList.add('show-animate');
+
+            // Highlight matching nav link
+            const id = sec.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+        } else {
+            // Home keeps show-animate (initial page-load reveal animation)
+            if (!sec.classList.contains('home')) {
+                sec.classList.remove('show-animate');
+            }
+        }
+    });
+}, {
+    // Section considered visible when 15% inside the viewport
+    rootMargin: '-15% 0px -15% 0px',
+    threshold: 0
+});
+
+sections.forEach(sec => sectionObserver.observe(sec));
+
+// ── 4. FOOTER ANIMATION ─────────────────────────────────────
+const footer = document.querySelector('footer');
+
+if (footer) {
+    const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            footer.classList.toggle('show-animate', entry.isIntersecting);
+        });
+    }, {
+        // Trigger as soon as 20% of the footer enters the viewport
+        threshold: 0.2
+    });
+
+    footerObserver.observe(footer);
 }
