@@ -57,3 +57,23 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.vp-metric-value[data-target]').forEach(el => {
     counterObserver.observe(el);
 });
+
+// ── 3. TOC ACTIVE LINK ──────────────────────────────────────
+const tocLinks = document.querySelectorAll('.vp-toc-link');
+
+if (tocLinks.length) {
+    const sectionIds = [...tocLinks].map(a => a.getAttribute('href').slice(1));
+    const sections   = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    const tocObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            tocLinks.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+            });
+        });
+    }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+
+    sections.forEach(s => tocObserver.observe(s));
+}

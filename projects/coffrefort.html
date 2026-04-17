@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CryptoVault — Coffre-fort numérique sécurisé : API REST PHP avec chiffrement AES-256-GCM et client desktop JavaFX. Projet BTS SIO SLAM par Denys.">
     <title>CryptoVault — Denys Portfolio</title>
@@ -11,6 +10,16 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-page.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react":            "https://esm.sh/react@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+        "htm/react":        "https://esm.sh/htm@3.1.1/react?external=react"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -24,7 +33,7 @@
 
     <main>
 
-        <!-- Hero -->
+        <!-- ── HERO ── -->
         <section class="project-hero">
             <div class="project-hero-content">
                 <div class="project-meta">
@@ -49,84 +58,269 @@
                 </div>
                 <h1>CryptoVault</h1>
                 <p class="project-subtitle">Coffre-fort numérique sécurisé — Backend REST PHP + Client desktop JavaFX — Projet BTS SIO SLAM</p>
+
+                <div class="cv-hero-stats">
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">38</span>
+                        <span class="cv-stat-label">Routes API</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">AES‑256</span>
+                        <span class="cv-stat-label">Chiffrement</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">JWT</span>
+                        <span class="cv-stat-label">Auth sécurisée</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">2</span>
+                        <span class="cv-stat-label">Composants</span>
+                    </div>
+                </div>
             </div>
             <div class="project-hero-img">
-                <img src="../img/coffreFort.png" alt="Capture d'écran du client CryptoVault" loading="eager">
+                <img src="../img/CryptoVault/coffreFort.png" alt="Interface principale CryptoVault" loading="eager">
             </div>
         </section>
 
-        <!-- Content -->
+        <!-- ── GALLERY ── -->
+        <section class="cv-gallery-section">
+            <div class="cv-gallery-inner">
+                <h2 class="cv-gallery-title">
+                    <i class="bx bx-images" aria-hidden="true"></i>
+                    Captures d'écran
+                </h2>
+                <p class="cv-gallery-subtitle">Défilement automatique · Naviguez avec les flèches</p>
+                <div id="cv-gallery"></div>
+            </div>
+        </section>
+
+        <!-- ── CONTENT ── -->
         <div class="project-content">
             <div class="project-sections">
 
+                <!-- Vue d'ensemble -->
                 <div class="project-section">
                     <h2>Vue d'ensemble</h2>
                     <p>
-                        <strong>CryptoVault</strong> est un système complet de coffre-fort numérique sécurisé
-                        composé de deux parties complémentaires : un <strong>backend REST PHP</strong> assurant
+                        <strong>CryptoVault</strong> est un système complet de coffre-fort numérique composé
+                        de deux composants complémentaires : un <strong>backend REST PHP</strong> assurant
                         le stockage chiffré des fichiers, et un <strong>client desktop JavaFX</strong> offrant
-                        une interface native multi-plateforme pour gérer l'espace de stockage.
+                        une interface native multi-plateforme.
                     </p>
                     <p>
                         Le projet met en œuvre des techniques avancées de sécurité : chiffrement
-                        <strong>AES-256-GCM</strong> au repos avec enveloppe de clés, authentification
-                        <strong>JWT</strong>, versionnage automatique des fichiers, partages sécurisés
-                        avec tokens signés et audit complet des accès.
+                        <strong>AES-256-GCM</strong> au repos avec enveloppe de clés (KEK), authentification
+                        <strong>JWT</strong>, versionnage automatique avec checksum SHA-256, partages
+                        sécurisés par tokens signés et audit complet des accès.
                     </p>
+
+                    <div class="cv-overview-cards">
+                        <div class="cv-overview-card">
+                            <i class="bx bxl-php" aria-hidden="true"></i>
+                            <div>
+                                <h3>Backend PHP</h3>
+                                <p>API REST Slim 4 · 38 routes · Medoo ORM · Docker</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bxl-java" aria-hidden="true"></i>
+                            <div>
+                                <h3>Client JavaFX</h3>
+                                <p>Java 17+ · OkHttp · Jackson · Maven · Interface native</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bx-lock-alt" aria-hidden="true"></i>
+                            <div>
+                                <h3>Sécurité</h3>
+                                <p>AES-256-GCM · JWT · KEK · SHA-256 · Audit logs</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Backend -->
                 <div class="project-section">
                     <h2>Backend — API REST PHP</h2>
-                    <p>
-                        L'API REST est construite avec <strong>Slim Framework 4.12</strong> et <strong>Medoo 2.2</strong>
-                        et expose 38 routes couvrant l'ensemble des opérations métier.
-                    </p>
-                    <ul>
-                        <li>Chiffrement <strong>AES-256-GCM</strong> au repos avec enveloppe de clés (KEK)</li>
-                        <li>Authentification JWT via Firebase PHP-JWT avec middleware dédié</li>
-                        <li>Organisation hiérarchique des dossiers avec contraintes CASCADE</li>
-                        <li>Versionnage automatique : checksum SHA-256, IV et auth tag par version</li>
-                        <li>Partages sécurisés : token base64url, expiration, limitation d'usages, révocation</li>
-                        <li>Gestion des quotas utilisateur avec blocage automatique à 100 %</li>
-                        <li>Table <code>audit_logs</code> pour traçabilité complète (IP, user-agent, action)</li>
-                        <li>Rôle administrateur : gestion des utilisateurs, suppression avec nettoyage CASCADE</li>
-                    </ul>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                L'API REST est construite avec <strong>Slim Framework 4.12</strong> et
+                                <strong>Medoo 2.2</strong>. Elle expose 38 routes couvrant l'ensemble
+                                des opérations métier, de l'authentification à la gestion des quotas.
+                            </p>
+                            <ul>
+                                <li>Chiffrement <strong>AES-256-GCM</strong> au repos — IV et auth tag par version</li>
+                                <li>Enveloppe de clés KEK : la clé de chiffrement est elle-même chiffrée</li>
+                                <li>Authentification JWT via <strong>Firebase PHP-JWT</strong> avec middleware dédié</li>
+                                <li>Organisation hiérarchique des dossiers avec contraintes CASCADE</li>
+                                <li>Versionnage automatique : checksum SHA-256, IV et auth tag par version</li>
+                                <li>Partages sécurisés : token base64url, expiration, limitation d'usages, révocation</li>
+                                <li>Gestion des quotas utilisateur avec blocage automatique à 100 %</li>
+                                <li>Table <code>audit_logs</code> : IP, user-agent, action — traçabilité complète</li>
+                                <li>Rôle administrateur : gestion des utilisateurs, suppression CASCADE</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/CryptoVault/menu_coffrefort.png"
+                                 alt="Menu de navigation CryptoVault"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Menu & arborescence de dossiers</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Client JavaFX -->
                 <div class="project-section">
                     <h2>Client — Application Desktop JavaFX</h2>
-                    <p>
-                        Le client lourd <strong>JavaFX 21</strong> communique avec l'API REST via
-                        <strong>OkHttp 4.12</strong> et offre une interface native réactive.
-                    </p>
-                    <ul>
-                        <li>Connexion sécurisée avec surveillance automatique de session JWT (toutes les minutes)</li>
-                        <li>Déconnexion automatique à l'expiration du token avec redirection</li>
-                        <li>Arborescence hiérarchique de dossiers (<code>TreeView</code>) avec menu contextuel</li>
-                        <li>Upload / download avec barre de progression, support fichiers volumineux (streaming)</li>
-                        <li>Historique complet des versions : checksum SHA-256, téléchargement sélectif</li>
-                        <li>Gestion des partages : création, expiration, limitation d'usages, révocation</li>
-                        <li>Barre de quota avec alertes visuelles à 80 % (orange) et 90 % (rouge)</li>
-                        <li>Panneau d'administration : gestion des quotas et des utilisateurs</li>
-                    </ul>
+                    <div class="cv-split cv-split--reverse">
+                        <div class="cv-img-aside">
+                            <img src="../img/CryptoVault/choix_fichier_coffrefort.png"
+                                 alt="Upload de fichier CryptoVault"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Dialogue d'upload avec barre de progression</span>
+                        </div>
+                        <div>
+                            <p>
+                                Le client lourd <strong>JavaFX 21</strong> communique avec l'API via
+                                <strong>OkHttp 4.12</strong> et propose une interface native réactive
+                                avec surveillance automatique de session JWT.
+                            </p>
+                            <ul>
+                                <li>Surveillance JWT toutes les minutes — déconnexion automatique à expiration</li>
+                                <li>Arborescence <code>TreeView</code> avec menu contextuel complet</li>
+                                <li>Upload / download avec barre de progression, streaming grands fichiers</li>
+                                <li>Historique complet des versions — checksum SHA-256, téléchargement sélectif</li>
+                                <li>Gestion des partages : création, expiration, limitation d'usages, révocation</li>
+                                <li>Barre de quota avec alertes visuelles à 80 % (orange) et 90 % (rouge)</li>
+                                <li>Panneau d'administration : gestion des quotas et des utilisateurs</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Quotas -->
+                <div class="project-section">
+                    <h2>Gestion des quotas &amp; Administration</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                Le panneau d'administration permet à l'administrateur de gérer les quotas
+                                par utilisateur, visualiser l'occupation globale du stockage et
+                                effectuer des suppressions en cascade sécurisées.
+                            </p>
+                            <ul>
+                                <li>Quota par utilisateur configurable depuis le panneau admin</li>
+                                <li>Blocage automatique des uploads à 100 % d'occupation</li>
+                                <li>Alertes visuelles progressives : orange à 80 %, rouge à 90 %</li>
+                                <li>Protection contre l'auto-suppression administrateur</li>
+                                <li>Suppression cascade : dossiers, fichiers, versions, partages nettoyés</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/CryptoVault/choix_quotas_coffrefort.png"
+                                 alt="Gestion des quotas CryptoVault"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Panneau d'administration des quotas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architecture -->
                 <div class="project-section">
                     <h2>Architecture</h2>
                     <p>
                         Les deux composants suivent le pattern <strong>MVC</strong>. L'API REST utilise
                         des <em>Repositories</em> Medoo en couche d'accès aux données ; le client JavaFX
-                        sépare les vues FXML, les contrôleurs annotés <code>@FXML</code> et les modèles POJO
-                        mappés via Jackson.
+                        sépare les vues FXML, les contrôleurs annotés <code>@FXML</code> et les modèles
+                        POJO mappés via Jackson.
                     </p>
-                    <ul>
-                        <li>Backend : AppFactory Slim → Middlewares (CORS, JWT, Error) → Routes → Controllers → Repositories → Medoo → MySQL</li>
-                        <li>Client : Interface FXML → Contrôleur @FXML → <code>ApiClient</code> (OkHttp) → API REST</li>
+
+                    <div class="cv-arch-flow">
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bxl-java" aria-hidden="true"></i>
+                                Client JavaFX
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">Interface FXML</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Contrôleur <code>@FXML</code></div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">ApiClient (OkHttp)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">API REST ↕</div>
+                            </div>
+                        </div>
+
+                        <div class="cv-arch-separator">
+                            <i class="bx bx-transfer-alt" aria-hidden="true"></i>
+                            <span>HTTPS / JWT</span>
+                        </div>
+
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bxl-php" aria-hidden="true"></i>
+                                Backend PHP
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">AppFactory Slim</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Middlewares (CORS · JWT · Error)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Routes → Controllers → Repositories</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">Medoo → MySQL</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul style="margin-top:2rem">
                         <li>Stockage physique chiffré dans <code>storage/files/{user_id}/</code></li>
                         <li>Base de données avec triggers et contraintes CASCADE complètes</li>
+                        <li>Containerisation Docker Compose : PHP-FPM + Nginx + MySQL</li>
                     </ul>
                 </div>
 
+                <!-- Sécurité -->
+                <div class="project-section">
+                    <h2>Sécurité</h2>
+                    <div class="cv-security-grid">
+                        <div class="cv-sec-card">
+                            <i class="bx bx-shield-quarter" aria-hidden="true"></i>
+                            <h3>AES-256-GCM</h3>
+                            <p>Chaque version possède son propre IV et auth tag. Intégrité garantie à chaque lecture.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-key" aria-hidden="true"></i>
+                            <h3>Enveloppe KEK</h3>
+                            <p>La clé de chiffrement (DEK) est elle-même chiffrée par une Key Encryption Key (KEK).</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-badge-check" aria-hidden="true"></i>
+                            <h3>JWT</h3>
+                            <p>Vérification d'expiration côté client ET serveur. Renouvellement automatique toutes les minutes.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-link" aria-hidden="true"></i>
+                            <h3>Tokens de partage</h3>
+                            <p>base64url (~43 chars), non devinables. Expiration, limite d'usages et révocation immédiate.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-fingerprint" aria-hidden="true"></i>
+                            <h3>SHA-256</h3>
+                            <p>Checksum SHA-256 par version de fichier — détection de toute altération des données au repos.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-list-check" aria-hidden="true"></i>
+                            <h3>Audit logs</h3>
+                            <p>Traçabilité complète : chaque action est enregistrée avec IP, user-agent et horodatage.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech table -->
                 <div class="project-section">
                     <h2>Technologies utilisées</h2>
                     <table class="tech-table">
@@ -153,19 +347,7 @@
                     </table>
                 </div>
 
-                <div class="project-section">
-                    <h2>Sécurité</h2>
-                    <ul>
-                        <li>Chiffrement <strong>AES-256-GCM</strong> : chaque version de fichier possède son propre IV et auth tag</li>
-                        <li>Enveloppe de clés : la clé de chiffrement est elle-même chiffrée avec une KEK (Key Encryption Key)</li>
-                        <li>Tokens JWT : vérification d'expiration côté client et côté serveur, renouvellement automatique</li>
-                        <li>Hachage des mots de passe : <code>password_hash()</code> / <code>password_verify()</code></li>
-                        <li>Tokens de partage : base64url (~43 caractères), non devinables</li>
-                        <li>Interdiction de supprimer la dernière version d'un fichier</li>
-                        <li>Protection contre l'auto-suppression administrateur</li>
-                    </ul>
-                </div>
-
+                <!-- Compétences -->
                 <div class="project-section">
                     <h2>Compétences mobilisées</h2>
                     <ul>
@@ -192,6 +374,7 @@
         </a>
     </footer>
 
+    <script type="module" src="../js/coffrefort-react.js"></script>
 </body>
 
 </html>

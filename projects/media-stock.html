@@ -3,14 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Media Stock — Application mobile-first de gestion d'inventaire informatique avec QR codes. Projet BTS SIO SLAM par Denys.">
-    <title>Media Stock — Denys Portfolio</title>
+    <meta name="description" content="MediaStock — Application web mobile-first de gestion d'inventaire informatique avec QR codes, prêts et Docker. Projet BTS SIO SLAM par Yanis ADIDI.">
+    <title>MediaStock — Denys Portfolio</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-page.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react":            "https://esm.sh/react@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+        "htm/react":        "https://esm.sh/htm@3.1.1/react?external=react"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -24,7 +33,7 @@
 
     <main>
 
-        <!-- Hero -->
+        <!-- ── HERO ── -->
         <section class="project-hero">
             <div class="project-hero-content">
                 <div class="project-meta">
@@ -41,81 +50,276 @@
                     </a>
                 </div>
                 <h1>Media Stock</h1>
-                <p class="project-subtitle">Application web mobile-first de gestion de matériel informatique et audiovisuel — Projet BTS SIO SLAM</p>
+                <p class="project-subtitle">Application web mobile-first de gestion de matériel informatique et audiovisuel — QR codes, prêts, Docker — Projet BTS SIO SLAM</p>
+
+                <div class="cv-hero-stats">
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">QR</span>
+                        <span class="cv-stat-label">Scan mobile</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">3</span>
+                        <span class="cv-stat-label">Services Docker</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">MVC</span>
+                        <span class="cv-stat-label">Architecture</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">PDO</span>
+                        <span class="cv-stat-label">Accès données</span>
+                    </div>
+                </div>
             </div>
             <div class="project-hero-img">
-                <img src="../img/MediaStock.png" alt="Capture d'écran de l'application Media Stock" loading="eager">
+                <img src="../img/MediaStock/859E7B4C-3569-4E3E-BCAA-5734A8451720.png"
+                     alt="Interface principale MediaStock"
+                     loading="eager">
             </div>
         </section>
 
-        <!-- Content -->
+        <!-- ── GALLERY ── -->
+        <section class="cv-gallery-section">
+            <div class="cv-gallery-inner">
+                <h2 class="cv-gallery-title">
+                    <i class="bx bx-images" aria-hidden="true"></i>
+                    Captures d'écran
+                </h2>
+                <p class="cv-gallery-subtitle">Défilement automatique · Desktop &amp; Mobile · Naviguez avec les flèches</p>
+                <div id="ms-gallery"></div>
+            </div>
+        </section>
+
+        <!-- ── CONTENT ── -->
         <div class="project-content">
             <div class="project-sections">
 
+                <!-- Vue d'ensemble -->
                 <div class="project-section">
-                    <h2>À propos</h2>
+                    <h2>Vue d'ensemble</h2>
                     <p>
-                        <strong>MediaStock</strong> est une application web <strong>mobile-first</strong> de gestion de
-                        matériel informatique et audiovisuel. Elle permet la gestion d'un inventaire complet, le suivi
-                        des prêts et retours, ainsi que l'identification unique de chaque matériel via un
-                        <strong>QR code</strong> scannable depuis smartphone.
+                        <strong>MediaStock</strong> est une application web <strong>mobile-first</strong> de gestion
+                        de matériel informatique et audiovisuel. Elle centralise l'inventaire, le suivi des prêts
+                        et retours, et permet l'identification unique de chaque équipement par
+                        <strong>QR code</strong> scannable directement depuis un smartphone.
                     </p>
                     <p>
-                        L'application est entièrement <strong>conteneurisée avec Docker</strong>, garantissant un
-                        environnement reproductible et portable. Développée en BTS SIO SLAM, session 2025,
-                        par Yanis ADIDI — période de réalisation : octobre–novembre 2025.
+                        Entièrement <strong>conteneurisée avec Docker Compose</strong>, l'application garantit
+                        un environnement reproductible. Développée en BTS SIO SLAM (session 2025) par
+                        Yanis ADIDI, avec contribution de Denys Lyulchak.
                     </p>
+
+                    <div class="cv-overview-cards">
+                        <div class="cv-overview-card">
+                            <i class="bx bx-qr-scan" aria-hidden="true"></i>
+                            <div>
+                                <h3>Inventaire QR</h3>
+                                <p>CRUD complet + QR code unique par équipement, imprimable et scannable en 1 clic.</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bx-mobile-alt" aria-hidden="true"></i>
+                            <div>
+                                <h3>Interface Mobile-First</h3>
+                                <p>Bootstrap 5 optimisé smartphone — enregistrement de prêt par scan caméra.</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bxl-docker" aria-hidden="true"></i>
+                            <div>
+                                <h3>Docker Ready</h3>
+                                <p>3 services (Apache, MySQL 8, phpMyAdmin) — déploiement en une commande.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Fonctionnalités -->
                 <div class="project-section">
-                    <h2>Fonctionnalités</h2>
-                    <ul>
-                        <li>CRUD complet de l'inventaire : ajout, modification, archivage du matériel</li>
-                        <li>Génération automatique et impression d'un QR code unique par matériel</li>
-                        <li>Enregistrement des prêts par scan QR depuis smartphone (caméra intégrée)</li>
-                        <li>Suivi des retours et clôture automatique des prêts</li>
-                        <li>Blocage des prêts si le matériel est déjà emprunté</li>
-                        <li>Filtrage et recherche dynamique par catégorie, disponibilité et état</li>
-                        <li>Gestion des utilisateurs : rôles étudiant / intervenant</li>
-                        <li>Authentification administrateur avec expiration de session (5 minutes)</li>
-                        <li>Archivage logique (pas de suppression physique)</li>
-                    </ul>
+                    <h2>Fonctionnalités principales</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                L'application couvre l'ensemble du cycle de vie du matériel : de l'ajout
+                                à l'inventaire jusqu'à l'archivage logique, en passant par la gestion complète
+                                des <strong>prêts par scan QR</strong>.
+                            </p>
+                            <ul>
+                                <li>CRUD complet : ajout, modification, archivage du matériel</li>
+                                <li>Génération automatique et impression d'un QR code unique par matériel</li>
+                                <li>Enregistrement des prêts par scan QR depuis caméra smartphone</li>
+                                <li>Suivi des retours et clôture automatique des prêts</li>
+                                <li>Blocage automatique si le matériel est déjà emprunté</li>
+                                <li>Filtrage et recherche dynamique par catégorie, disponibilité et état</li>
+                                <li>Gestion des utilisateurs : rôles étudiant / intervenant</li>
+                                <li>Authentification administrateur avec expiration de session (5 min)</li>
+                                <li>Archivage logique — pas de suppression physique des données</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/MediaStock/Screenshot_20260416-172823.png"
+                                 alt="Vue mobile de l'inventaire MediaStock"
+                                 loading="lazy"
+                                 class="ms-img-portrait">
+                            <span class="cv-img-caption">Inventaire sur mobile — liste et disponibilité</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- QR Code & Prêts -->
+                <div class="project-section">
+                    <h2>Scan QR &amp; Gestion des prêts</h2>
+                    <div class="cv-split cv-split--reverse">
+                        <div class="cv-img-aside">
+                            <img src="../img/MediaStock/Screenshot_20260416-172936.png"
+                                 alt="Scan QR Code MediaStock"
+                                 loading="lazy"
+                                 class="ms-img-portrait">
+                            <span class="cv-img-caption">Scan QR Code via caméra smartphone</span>
+                        </div>
+                        <div>
+                            <p>
+                                Grâce à <strong>html5-qrcode.js</strong>, l'utilisateur scanne le QR code
+                                collé sur le matériel depuis n'importe quel smartphone sans installation.
+                                Le système identifie instantanément l'équipement et propose les actions disponibles.
+                            </p>
+                            <ul>
+                                <li>Scan direct via caméra — pas d'application tierce nécessaire</li>
+                                <li>Redirection automatique vers la fiche matériel correspondante</li>
+                                <li>Enregistrement du prêt en 2 touches : emprunteur + date de retour</li>
+                                <li>Vérification automatique de disponibilité avant validation</li>
+                                <li>Notification visuelle si matériel indisponible ou archivé</li>
+                                <li>Clôture de prêt par re-scan lors du retour</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architecture -->
                 <div class="project-section">
                     <h2>Architecture technique</h2>
                     <p>
-                        Architecture <strong>MVC léger</strong> implémentée en PHP procédural avec Docker Compose.
-                        Le frontend communique avec le backend via des appels <code>fetch()</code> vers une
-                        API PHP. Le dossier <code>public/</code> est le DocumentRoot Apache,
-                        protégeant le code métier.
+                        Architecture <strong>MVC léger</strong> en PHP procédural avec Docker Compose.
+                        Le frontend envoie ses requêtes via <code>fetch()</code> vers une API PHP.
+                        Le dossier <code>public/</code> est le DocumentRoot Apache, isolant le code métier.
                     </p>
-                    <ul>
-                        <li>Frontend → fetch() → API PHP (Apache) → PDO → MySQL (Docker volume)</li>
-                        <li>3 services Docker : web (PHP 8.2), mysql (8.0), phpMyAdmin</li>
-                        <li>Modélisation base de données selon la méthode Merise</li>
-                        <li>Connexion PDO centralisée avec variables d'environnement</li>
+
+                    <div class="cv-arch-flow">
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bx-mobile-alt" aria-hidden="true"></i>
+                                Client (Browser / Mobile)
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">HTML5 Bootstrap 5</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">JS + QRCode.js + Flatpickr</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">fetch() → API PHP ↕</div>
+                            </div>
+                        </div>
+
+                        <div class="cv-arch-separator">
+                            <i class="bx bx-transfer-alt" aria-hidden="true"></i>
+                            <span>HTTP / JSON</span>
+                        </div>
+
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bxl-php" aria-hidden="true"></i>
+                                Backend PHP (Apache)
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">Routeur PHP procédural</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Controllers (logique métier)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Models (requêtes PDO)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">PDO → MySQL 8.0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul style="margin-top:2rem">
+                        <li>Variables d'environnement Docker pour la connexion PDO — aucune valeur en dur</li>
+                        <li>Modélisation Merise (MCD → MLD → MPD) — contraintes CASCADE complètes</li>
+                        <li>Session PHP sécurisée avec expiration automatique à 5 minutes d'inactivité</li>
                     </ul>
                 </div>
 
+                <!-- Docker -->
                 <div class="project-section">
                     <h2>Environnement Docker</h2>
-                    <table class="tech-table">
-                        <thead>
-                            <tr>
-                                <th>Service</th>
-                                <th>Image</th>
-                                <th>Port local</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Application PHP</td><td>php:8.2-apache</td><td>9080</td></tr>
-                            <tr><td>Base de données</td><td>mysql:8.0</td><td>interne</td></tr>
-                            <tr><td>Administration DB</td><td>phpmyadmin:latest</td><td>8082</td></tr>
-                        </tbody>
-                    </table>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                L'application est entièrement conteneurisée avec <strong>Docker Compose</strong>.
+                                Trois services collaborent pour reproduire l'environnement de production
+                                en une seule commande : <code>docker compose up -d</code>.
+                            </p>
+                            <table class="tech-table" style="margin-top:1.6rem">
+                                <thead>
+                                    <tr>
+                                        <th>Service</th>
+                                        <th>Image</th>
+                                        <th>Port</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Application PHP</td><td>php:8.2-apache</td><td>9080</td></tr>
+                                    <tr><td>Base de données</td><td>mysql:8.0</td><td>interne</td></tr>
+                                    <tr><td>Administration DB</td><td>phpmyadmin:latest</td><td>8082</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/MediaStock/D75E5111-FC3E-4C3A-8112-112F8C3970D2.png"
+                                 alt="Gestion des prêts MediaStock"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Interface de gestion des prêts actifs</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Fonctionnalités clés grid -->
+                <div class="project-section">
+                    <h2>Points clés</h2>
+                    <div class="cv-security-grid">
+                        <div class="cv-sec-card">
+                            <i class="bx bx-package" aria-hidden="true"></i>
+                            <h3>CRUD Inventaire</h3>
+                            <p>Ajout, édition, archivage logique. Aucune suppression physique — traçabilité totale.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-qr-scan" aria-hidden="true"></i>
+                            <h3>QR Code unique</h3>
+                            <p>Généré à la création, imprimable sur étiquette. Scan caméra sans appli tierce.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-transfer" aria-hidden="true"></i>
+                            <h3>Gestion des prêts</h3>
+                            <p>Blocage automatique si indisponible. Clôture par re-scan ou action manuelle.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-search-alt" aria-hidden="true"></i>
+                            <h3>Filtrage dynamique</h3>
+                            <p>Recherche en temps réel par catégorie, état et statut sans rechargement de page.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-user-check" aria-hidden="true"></i>
+                            <h3>Rôles utilisateurs</h3>
+                            <p>Étudiant, intervenant, administrateur — accès distincts et session sécurisée 5 min.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bxl-docker" aria-hidden="true"></i>
+                            <h3>Docker Compose</h3>
+                            <p>Environnement reproductible en une commande — PHP 8.2, MySQL 8, phpMyAdmin.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech table -->
                 <div class="project-section">
                     <h2>Technologies utilisées</h2>
                     <table class="tech-table">
@@ -127,16 +331,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Backend</td><td>PHP procédural, PDO</td><td>8.2</td></tr>
+                            <tr><td>Backend</td><td>PHP procédural + PDO</td><td>8.2</td></tr>
                             <tr><td>Base de données</td><td>MySQL</td><td>8.0</td></tr>
                             <tr><td>Frontend</td><td>HTML5, CSS3, JavaScript ES6+</td><td>—</td></tr>
                             <tr><td>Framework CSS</td><td>Bootstrap</td><td>5.3.8</td></tr>
                             <tr><td>Icônes</td><td>FontAwesome</td><td>7.0.1</td></tr>
-                            <tr><td>QR Code</td><td>QRCode.js / html5-qrcode.js</td><td>—</td></tr>
-                            <tr><td>Dates</td><td>Flatpickr</td><td>—</td></tr>
-                            <tr><td>Infrastructure</td><td>Docker / Docker Compose</td><td>—</td></tr>
+                            <tr><td>QR Code</td><td>QRCode.js + html5-qrcode.js</td><td>—</td></tr>
+                            <tr><td>Calendrier</td><td>Flatpickr</td><td>—</td></tr>
+                            <tr><td>Infrastructure</td><td>Docker + Docker Compose</td><td>—</td></tr>
+                            <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Compétences -->
+                <div class="project-section">
+                    <h2>Compétences mobilisées</h2>
+                    <ul>
+                        <li>Concevoir une architecture MVC en PHP procédural avec séparation des responsabilités</li>
+                        <li>Implémenter une API PHP avec accès PDO sécurisé et variables d'environnement Docker</li>
+                        <li>Intégrer la génération et le scan de QR codes dans une interface mobile-first</li>
+                        <li>Mettre en œuvre Bootstrap 5 pour une expérience optimale sur tous les écrans</li>
+                        <li>Modéliser une base de données relationnelle avec la méthode Merise</li>
+                        <li>Conteneuriser une application web avec Docker Compose (PHP, MySQL, phpMyAdmin)</li>
+                        <li>Gérer les rôles et les sessions utilisateur côté serveur PHP</li>
+                        <li>Contribuer à un projet collaboratif géré avec Git et GitHub</li>
+                    </ul>
                 </div>
 
             </div>
@@ -145,12 +365,13 @@
     </main>
 
     <footer class="project-footer">
-        <p>Projet BTS SIO SLAM — Yanis ADIDI (2025) — Contributeur: Denys Lyulchak</p>
+        <p>Projet BTS SIO SLAM — Yanis ADIDI (2025) · Contributeur : Denys Lyulchak</p>
         <a href="../index.html#projects">
             <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
         </a>
     </footer>
 
+    <script type="module" src="../js/mediastock-react.js"></script>
 </body>
 
 </html>

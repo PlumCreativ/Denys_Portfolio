@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plan du site — Portfolio de Denys Lyulchak, étudiant BTS SIO SLAM. Retrouvez toutes les pages et sections du portfolio.">
+    <title>Plan du site — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        /* ── Layout ── */
+        .sitemap-page {
+            min-height: 100vh;
+            padding: 12rem 9% 6rem;
+        }
+
+        .sitemap-page .heading {
+            margin-bottom: 5rem;
+        }
+
+        /* ── Grid ── */
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* ── Card ── */
+        .sitemap-card {
+            background: var(--second-bg-color);
+            border-radius: 1.2rem;
+            padding: 2.4rem 2.8rem;
+            border: 1px solid transparent;
+            transition: border-color .25s, transform .25s;
+        }
+
+        .sitemap-card:hover {
+            border-color: var(--main-color);
+            transform: translateY(-4px);
+        }
+
+        .sitemap-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .sitemap-card-header i {
+            font-size: 2.4rem;
+            color: var(--main-color);
+        }
+
+        .sitemap-card-header h2 {
+            font-size: 1.9rem;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        /* ── Links ── */
+        .sitemap-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: .9rem;
+        }
+
+        .sitemap-links li {
+            display: flex;
+            align-items: baseline;
+            gap: .7rem;
+        }
+
+        .sitemap-links li::before {
+            content: '';
+            display: inline-block;
+            width: .6rem;
+            height: .6rem;
+            border-radius: 50%;
+            background: var(--main-color);
+            flex-shrink: 0;
+            margin-top: .3rem;
+        }
+
+        .sitemap-links a {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .sitemap-links a:hover {
+            color: var(--main-color);
+        }
+
+        .sitemap-links .link-desc {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            opacity: .6;
+            display: block;
+            margin-top: .15rem;
+        }
+
+        /* ── Divider ── */
+        .sitemap-note {
+            margin-top: 5rem;
+            text-align: center;
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: .55;
+        }
+
+        .sitemap-note a {
+            color: var(--main-color);
+            text-decoration: none;
+        }
+
+        .sitemap-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .sitemap-page {
+                padding: 9rem 5% 4rem;
+            }
+
+            .sitemap-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Header ── -->
+    <header class="header">
+        <a href="index.html" class="logo">Denys_</a>
+
+        <button class="bx bx-menu" id="menu-icon" aria-label="Ouvrir le menu" aria-expanded="false"></button>
+
+        <nav class="navbar">
+            <a href="index.html#home">Accueil</a>
+            <a href="index.html#about">À Propos</a>
+            <a href="index.html#education">Éducation</a>
+            <a href="index.html#skills">Compétences</a>
+            <a href="index.html#projects">Projets</a>
+            <a href="index.html#veille">Veille</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="src/BTS SIO - Tableau de synthèse - Epreuve E4 - BTS SIO 2025.pdf" download class="nav-btn">Réalisations</a>
+
+            <div class="nav-sci">
+                <a href="https://github.com/PlumCreativ" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                <a href="https://discord.com/channels/@me/714957540256907364" aria-label="Discord"><i class='bx bxl-discord-alt'></i></a>
+                <a href="https://www.linkedin.com/in/denys-lyulchak-5b04b3250/" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+            </div>
+
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+
+    <main class="sitemap-page">
+
+        <h1 class="heading">Plan du <span>site</span></h1>
+
+        <div class="sitemap-grid">
+
+            <!-- ── Portfolio principal ── -->
+            <div class="sitemap-card">
+                <div class="sitemap-card-header">
+                    <i class='bx bx-home-alt-2' aria-hidden="true"></i>
+                    <h2>Portfolio</h2>
+                </div>
+                <ul class="sitemap-links">
+                    <li>
+                        <div>
+                            <a href="index.html#home">Accueil</a>
+                            <span class="link-desc">Présentation &amp; appel à l'action</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="index.html#about">À Propos</a>
+                            <span class="link-desc">Qui suis-je, CV &amp; tableau de synthèse</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="index.html#education">Éducation</a>
+                            <span class="link-desc">Parcours académique et certifications</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="index.html#skills">Compétences</a>
+                            <span class="link-desc">Langages, frameworks et outils</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="index.html#projects">Projets</a>
+                            <span class="link-desc">Réalisations filtrables par technologie</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="index.html#veille">Veille</a>
+                            <span class="link-desc">Veille technologique et informatique</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="index.html#contact">Contact</a>
+                            <span class="link-desc">Formulaire de contact</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ── Projets ── -->
+            <div class="sitemap-card">
+                <div class="sitemap-card-header">
+                    <i class='bx bx-code-block' aria-hidden="true"></i>
+                    <h2>Projets</h2>
+                </div>
+                <ul class="sitemap-links">
+                    <li>
+                        <div>
+                            <a href="projects/note-de-frais.html">Note de Frais</a>
+                            <span class="link-desc">PHP · MySQL · HTML</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="projects/media-stock.html">Media Stock</a>
+                            <span class="link-desc">JavaScript · PHP · Docker</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="projects/learnit.html">LearnIt</a>
+                            <span class="link-desc">Java · MySQL · Maven</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="projects/coffrefort.html">CryptoVault</a>
+                            <span class="link-desc">Java · MySQL · Maven · PHP</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="projects/garagemoto.html">GarageMoto</a>
+                            <span class="link-desc">Java · JavaFX · MySQL · Maven</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="projects/blog.html">Blog</a>
+                            <span class="link-desc">HTML · CSS · PHP · JavaScript</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="projects/appmovie.html">AppMovie</a>
+                            <span class="link-desc">Java · MySQL · Maven · PHP</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ── Veille ── -->
+            <div class="sitemap-card">
+                <div class="sitemap-card-header">
+                    <i class='bx bx-search-alt-2' aria-hidden="true"></i>
+                    <h2>Veille technologique</h2>
+                </div>
+                <ul class="sitemap-links">
+                    <li>
+                        <div>
+                            <a href="veille/veille.html">Veille Automatique</a>
+                            <span class="link-desc">Scraping + IA — agrégateur de news tech</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="index.html#veille">Section Veille</a>
+                            <span class="link-desc">Résumé sur la page principale</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ── Documents ── -->
+            <div class="sitemap-card">
+                <div class="sitemap-card-header">
+                    <i class='bx bx-file' aria-hidden="true"></i>
+                    <h2>Documents</h2>
+                </div>
+                <ul class="sitemap-links">
+                    <li>
+                        <div>
+                            <a href="src/CV.pdf" target="_blank" rel="noopener">Curriculum Vitae</a>
+                            <span class="link-desc">CV au format PDF</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="src/BTS SIO - Tableau de synthèse - Epreuve E4 - BTS SIO 2025.pdf"
+                               download target="_blank" rel="noopener">Tableau de synthèse E4</a>
+                            <span class="link-desc">BTS SIO 2025 — Épreuve E4</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ── Navigation ── -->
+            <div class="sitemap-card">
+                <div class="sitemap-card-header">
+                    <i class='bx bx-sitemap' aria-hidden="true"></i>
+                    <h2>Navigation</h2>
+                </div>
+                <ul class="sitemap-links">
+                    <li>
+                        <div>
+                            <a href="index.html">Page principale</a>
+                            <span class="link-desc">Toutes les sections en une page</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="sitemap.html">Plan du site</a>
+                            <span class="link-desc">Cette page</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap XML</a>
+                            <span class="link-desc">Pour les moteurs de recherche</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <p class="sitemap-note">
+            Portfolio de <strong>Denys Lyulchak</strong> — BTS SIO SLAM &nbsp;·&nbsp;
+            <a href="index.html#contact">Me contacter</a>
+        </p>
+
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 par Denys | Tous droits réservés.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#" aria-label="Retour en haut"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
