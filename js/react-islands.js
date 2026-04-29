@@ -3,6 +3,18 @@ import { createRoot } from 'react-dom/client';
 import { html } from 'htm/react';
 
 /* ═══════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════ */
+
+function pctToLabel(pct) {
+  if (pct <= 25) return 'Notions';
+  if (pct <= 45) return 'Débutant';
+  if (pct <= 65) return 'Intermédiaire';
+  if (pct <= 80) return 'Avancé';
+  return 'Expert';
+}
+
+/* ═══════════════════════════════════════
    DATA
 ═══════════════════════════════════════ */
 
@@ -68,17 +80,53 @@ const PROJECTS = [
 const ALL_TAGS = ['Tous', ...new Set(PROJECTS.flatMap(p => p.tags))];
 
 const SKILLS_CODE = [
-  { label: 'PHP',        pct: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
-  { label: 'Java',       pct: 70, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-  { label: 'JavaScript', pct: 40, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { label: 'Python',     pct: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  {
+    label: 'PHP',
+    level: 'Expert',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+    desc: 'Développement backend avancé — APIs REST, gestion de sessions, POO, intégration MySQL et génération de PDF. Utilisé sur la majorité de mes projets.'
+  },
+  {
+    label: 'Java',
+    level: 'Avancé',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+    desc: 'Applications de bureau avec JavaFX, architecture MVC, connecteurs JDBC. Développé plusieurs logiciels métiers (gestion, inventaire, films).'
+  },
+  {
+    label: 'JavaScript',
+    level: 'Intermédiaire',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    desc: 'Manipulation du DOM, fetch API, logique côté client. Utilisation de React via ESM pour des composants interactifs.'
+  },
+  {
+    label: 'Python',
+    level: 'Avancé',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+    desc: 'Scripting, automatisation, web scraping (Scrapy, Selenium) et pipeline NLP (spaCy, Transformers). Projet de veille technologique intelligent.'
+  },
 ];
 
 const SKILLS_PRO = [
-  { label: 'Web Design',           pct: 30 },
-  { label: 'Gestion de projet',    pct: 60 },
-  { label: "Gestion d'incidents",  pct: 50 },
-  { label: 'Base de données',      pct: 80 },
+  {
+    label: 'Web Design',
+    level: 'Débutant',
+    desc: 'Conception d’interfaces responsives en HTML/CSS. Sens de l’esthétique et de l’ergonomie, mais compétence en développement et non en design graphique.'
+  },
+  {
+    label: 'Gestion de projet',
+    level: 'Intermédiaire',
+    desc: 'Expérience en méthodologie Agile/Scrum, gestion de backlog, sprints et revues. Coordination d’équipe sur plusieurs projets étudiants.'
+  },
+  {
+    label: "Gestion d'incidents",
+    level: 'Intermédiaire',
+    desc: 'Diagnostic et résolution de bugs applicatifs, suivi de tickets, documentation des anomalies et communication avec les utilisateurs finaux.'
+  },
+  {
+    label: 'Base de données',
+    level: 'Avancé',
+    desc: 'Conception de schémas relationnels, requêtes SQL complexes, optimisation des performances. Pratique régulière avec MySQL et PostgreSQL.'
+  },
 ];
 
 /* ═══════════════════════════════════════
@@ -137,48 +185,35 @@ function ProjectsIsland() {
    SKILLS ISLAND
 ═══════════════════════════════════════ */
 
-function SkillBar({ label, pct, animated }) {
+function SkillCard({ label, level, desc }) {
   return html`
-    <div className="progress">
-      <h3>${label} <span>${pct}%</span></h3>
-      <div className="bar">
-        <span style=${{ width: animated ? pct + '%' : '0%', transition: animated ? 'width 1.1s cubic-bezier(.4,0,.2,1)' : 'none' }}></span>
+    <div className="skill-card">
+      <div className="skill-card-header">
+        <span className="skill-card-label">${label}</span>
+        <span className="skill-level" data-level=${level}>${level}</span>
       </div>
+      <p className="skill-card-desc">${desc}</p>
     </div>
   `;
 }
 
-function SkillBarCode({ label, pct, icon, animated }) {
+function SkillCardCode({ label, level, icon, desc }) {
   return html`
-    <div className="progress progress--code">
-      <div className="progress-header">
+    <div className="skill-card skill-card--code">
+      <div className="skill-card-header">
         <div className="skill-lang-icon">
           <img src=${icon} alt=${label + ' logo'} loading="lazy" />
         </div>
-        <h3>${label} <span>${pct}%</span></h3>
+        <span className="skill-card-label">${label}</span>
+        <span className="skill-level" data-level=${level}>${level}</span>
       </div>
-      <div className="bar">
-        <span style=${{ width: animated ? pct + '%' : '0%', transition: animated ? 'width 1.1s cubic-bezier(.4,0,.2,1)' : 'none' }}></span>
-      </div>
+      <p className="skill-card-desc">${desc}</p>
     </div>
   `;
 }
 
 function SkillsIsland() {
-  const [animated, setAnimated] = useState(false);
   const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setAnimated(true);
-        observer.disconnect();
-      }
-    }, { threshold: 0.25 });
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
 
   return html`
     <div className="skills-row" ref=${ref}>
@@ -186,7 +221,7 @@ function SkillsIsland() {
         <h3 className="title">Compétences de codage</h3>
         <div className="skills-box">
           <div className="skills-content">
-            ${SKILLS_CODE.map(s => html`<${SkillBarCode} key=${s.label} label=${s.label} pct=${s.pct} icon=${s.icon} animated=${animated} />`)}
+            ${SKILLS_CODE.map(s => html`<${SkillCardCode} key=${s.label} label=${s.label} level=${s.level} icon=${s.icon} desc=${s.desc} />`)}
           </div>
         </div>
       </div>
@@ -195,7 +230,7 @@ function SkillsIsland() {
         <h3 className="title">Compétences Professionnelles</h3>
         <div className="skills-box">
           <div className="skills-content">
-            ${SKILLS_PRO.map(s => html`<${SkillBar} key=${s.label} label=${s.label} pct=${s.pct} animated=${animated} />`)}
+            ${SKILLS_PRO.map(s => html`<${SkillCard} key=${s.label} label=${s.label} level=${s.level} desc=${s.desc} />`)}
           </div>
         </div>
       </div>
@@ -279,7 +314,7 @@ function ContactIsland({ formspreeUrl }) {
         <i className="bx bx-check-circle" aria-hidden="true"></i>
         <h3>Message envoyé !</h3>
         <p>Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
-        <button className="btn" style=${{ marginTop: '1rem' }} onClick=${() => setStatus('idle')}>
+        <button className="btn" onClick=${() => setStatus('idle')}>
           Envoyer un autre message
         </button>
       </div>
@@ -297,7 +332,7 @@ function ContactIsland({ formspreeUrl }) {
       </div>
 
       <div className="input-box" style=${{ marginTop: '1.6rem' }}>
-        <${InputField} name="phone" type="tel" placeholder="Numéro de téléphone" value=${fields.phone} onChange=${handleChange} />
+        <${InputField} name="phone" type="tel" placeholder="Numéro de téléphone" required value=${fields.phone} onChange=${handleChange} />
         <${InputField} name="subject" placeholder="Sujet de l'e-mail" required value=${fields.subject} onChange=${handleChange} error=${errors.subject} />
         <span className="animate scroll" style=${{ '--i': 5 }}></span>
       </div>

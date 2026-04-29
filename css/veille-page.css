@@ -27,8 +27,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
     z-index: 100;
     border-bottom: .1rem solid rgba(255, 255, 255, 0.05);
+    transition: padding .3s ease;
+}
+
+.vp-header.toc-merged {
+    padding: 1.4rem 9%;
+}
+
+.vp-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.vp-header-toc {
+    width: 100%;
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: .1rem solid rgba(0, 171, 240, 0.12);
+    margin-top: .5rem;
+}
+
+.vp-header.toc-merged .vp-header-toc {
+    display: flex;
 }
 
 .vp-back-btn {
@@ -229,6 +257,12 @@ section {
 .vp-section--dark  { background: var(--bg-color); }
 .vp-section--light { background: var(--second-bg-color); }
 
+/* Décalage pour les ancres — compense le header fixe */
+.vp-section-title[id],
+[id^="vp-"] {
+    scroll-margin-top: 18rem;
+}
+
 .vp-section-inner {
     max-width: 120rem;
     margin: 0 auto;
@@ -272,6 +306,13 @@ section {
     z-index: 90;
     backdrop-filter: blur(10px);
     background: rgba(8, 27, 41, 0.88);
+    transition: opacity .3s ease, transform .3s ease;
+}
+
+.vp-toc.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
 }
 
 .vp-toc-label {

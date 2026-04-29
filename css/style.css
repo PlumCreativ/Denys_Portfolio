@@ -68,6 +68,7 @@ body {
     color: var(--text-color);
     font-weight: 500;
     margin-left: 3.5rem;
+    margin-bottom: 1rem;
     transition: .3s;
 }
 
@@ -267,7 +268,7 @@ section {
 .home-content .text-animate {
     position: relative;
     width: 100%;
-    max-width: 32.8rem;
+    max-width: 33.8rem;
 }
 
 .home-content .text-animate h3 {
@@ -278,28 +279,35 @@ section {
     background-image: linear-gradient(var(--main-color), var(--main-color));
     background-repeat: no-repeat;
     -webkit-background-clip: text;
-    background-position: -33rem 0;
+    background-clip: text;
+    background-position: -40rem 0;
+    transition: background-position .5s ease;
 }
 
-.home.show-animate .home-content .text-animate h3 {
-    animation: homeBgText 6s linear infinite;
-    animation-delay: 2s;
+/* Remplissage couleur déclenché par JS quand le texte est complet */
+.home-content .text-animate h3.tw-filled {
+    background-position: 0 0;
 }
 
+/* ::before désactivé — le curseur est géré par .tw-cursor via JS */
 .home-content .text-animate h3::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    border-right: 2px solid var(--main-color);
-    z-index: -1;
+    display: none;
 }
 
-.home.show-animate .home-content .text-animate h3::before {
-    animation: homeCursorText 6s linear infinite;
-    animation-delay: 2s;
+/* Curseur clignotant injecté par typewriter.js */
+.tw-cursor {
+    display: inline-block;
+    width: 6px;
+    height: 1em;
+    border-right: 2px solid var(--main-color);
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: tw-blink .75s step-end infinite;
+}
+
+@keyframes tw-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
 }
 
 .home-content p {
@@ -588,6 +596,153 @@ span {
     font-size: 1.2rem;
 }
 
+/* ── PDF VIEWER ── */
+.pdf-viewer-container {
+    position: relative;
+    margin-top: 5rem;
+    background: var(--surface-color);
+    border: .1rem solid var(--surface-border);
+    border-radius: 1.4rem;
+    overflow: hidden;
+    box-shadow: var(--surface-shadow);
+}
+
+.pdf-viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2.4rem 3rem;
+    background: var(--second-bg-color);
+    border-bottom: .1rem solid var(--surface-border);
+}
+
+.pdf-header-content {
+    flex: 1;
+}
+
+.pdf-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: .4rem 1rem;
+    background: rgba(0, 171, 240, 0.12);
+    border: .1rem solid rgba(0, 171, 240, 0.2);
+    border-radius: 999px;
+    color: var(--main-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: .05rem;
+    margin-bottom: 1rem;
+}
+
+.pdf-viewer-header h3 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0 0 .8rem;
+}
+
+.pdf-viewer-header p {
+    font-size: 1.5rem;
+    color: var(--surface-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.pdf-download-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: .8rem;
+    padding: 1rem 2rem;
+    background: var(--main-color);
+    color: var(--bg-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.pdf-download-btn:hover {
+    background: transparent;
+    color: var(--main-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 171, 240, 0.3);
+}
+
+.pdf-download-btn i {
+    font-size: 2rem;
+}
+
+.pdf-viewer-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 130vh;
+    min-height: 60rem;
+    background: var(--bg-color);
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.pdf-embed {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    pointer-events: none;
+}
+
+.pdf-click-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 171, 240, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0;
+    transition: opacity .3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.pdf-viewer-wrapper:hover .pdf-click-overlay {
+    opacity: 1;
+}
+
+.pdf-click-overlay i {
+    font-size: 4rem;
+    color: var(--main-color);
+}
+
+.pdf-click-overlay span {
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .pdf-viewer-header {
+        flex-direction: column;
+        padding: 2rem;
+    }
+    
+    .pdf-download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .pdf-viewer-wrapper {
+        height: 60vh;
+        min-height: 50rem;
+    }
+}
+
 
 
 @media (max-width: 768px) {
@@ -800,16 +955,20 @@ span {
     flex-wrap: wrap;
     gap: 3rem;
     width: 100%;
+    align-items: stretch;
 }
 
 .skills-row .skills-column {
     flex: 1 1 40rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .skills-column .title {
     position: relative;
     display: inline-flex;
     align-items: center;
+    align-self: flex-start;
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: .05rem;
@@ -823,10 +982,14 @@ span {
 
 .skills-column .skills-box {
     position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .skills-box .skills-content {
     position: relative;
+    flex: 1;
     background: var(--surface-color);
     border: .1rem solid var(--surface-border);
     border-radius: 1.4rem;
@@ -848,106 +1011,89 @@ span {
 }
 
 .skills-content .progress {
-    padding: 1rem 0;
+    display: none; /* conservé pour compat — non utilisé */
 }
 
-.skills-content .progress h3 {
-    font-size: 1.7rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 1.2rem;
+/* ── Cartes compétences textuelles ── */
+.skill-card {
+    padding: 1.4rem 0;
+    border-bottom: .1rem solid rgba(0, 171, 240, 0.08);
 }
 
-/* Compétences de codage — icônes langages */
-.progress--code .progress-header {
+.skill-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.skill-card:first-child {
+    padding-top: 0;
+}
+
+.skill-card-header {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
-    margin-bottom: .4rem;
+    gap: 1rem;
+    margin-bottom: .8rem;
 }
 
-.progress--code .progress-header h3 {
-    margin: 0;
+.skill-card-label {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--text-color);
     flex: 1;
 }
 
-.skill-lang-icon {
+.skill-card-desc {
+    font-size: 1.45rem;
+    color: var(--surface-muted);
+    line-height: 1.7;
+}
+
+.skill-card--code .skill-lang-icon {
     flex-shrink: 0;
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 3.2rem;
+    height: 3.2rem;
     background: rgba(0, 171, 240, 0.08);
     border: .1rem solid rgba(0, 171, 240, 0.2);
     border-radius: .8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .5rem;
+    padding: .45rem;
     transition: background .3s ease, border-color .3s ease, transform .3s ease;
 }
 
-.skill-lang-icon img {
+.skill-card--code .skill-lang-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.progress--code:hover .skill-lang-icon {
+.skill-card--code:hover .skill-lang-icon {
     background: rgba(0, 171, 240, 0.18);
     border-color: var(--main-color);
     transform: scale(1.1) rotate(-4deg);
 }
 
-.skills-content .progress h3 span {
-    color: var(--surface-muted);
-}
-
-.skills-content .progress .bar {
-    height: 1.4rem;
+/* Badge niveau */
+.skill-level {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: .06rem;
+    text-transform: uppercase;
+    padding: .2rem .9rem;
     border-radius: 999px;
-    border: .1rem solid rgba(0, 171, 240, 0.15);
-    background: rgba(0, 171, 240, 0.06);
-    padding: .2rem;
-    margin: 1rem 0;
+    white-space: nowrap;
+    color: var(--main-color);
+    background: rgba(0, 171, 240, 0.1);
+    border: .1rem solid rgba(0, 171, 240, 0.25);
 }
 
-.skills-content .progress .bar span {
-    display: block;
-    height: 100%;
-    border-radius: 999px;
-    background: var(--main-color);
-}
-
-.skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span {
-    width: 90%;
-}
-
-.skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span {
-    width: 70%;
-}
-
-.skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span {
-    width: 40%;
-}
-
-.skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span {
-    width: 70%;
-}
-
-.skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span {
-    width: 30%;
-}
-
-.skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span {
-    width: 60%;
-}
-
-.skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span {
-    width: 50%;
-}
-
-.skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
-    width: 80%;
-}
+.skill-level[data-level="Expert"]        { color: #00c896; background: rgba(0, 200, 150, 0.1); border-color: rgba(0, 200, 150, 0.3); }
+.skill-level[data-level="Avancé"]        { color: var(--main-color); background: rgba(0, 171, 240, 0.1); border-color: rgba(0, 171, 240, 0.3); }
+.skill-level[data-level="Intermédiaire"] { color: #a0c4ff; background: rgba(160, 196, 255, 0.08); border-color: rgba(160, 196, 255, 0.2); }
+.skill-level[data-level="Débutant"]      { color: var(--surface-soft); background: rgba(200, 214, 221, 0.07); border-color: rgba(200, 214, 221, 0.15); }
+.skill-level[data-level="Notions"]       { color: var(--surface-muted); background: rgba(158, 170, 176, 0.07); border-color: rgba(158, 170, 176, 0.15); }
 
 .contact {
     min-height: auto;
@@ -994,7 +1140,7 @@ span {
 .contact form .textarea-field textarea {
     width: 100%;
     height: 100%;
-    padding: 1.7rem 1.8rem 3.2rem;
+    padding: 1.7rem 1.8rem 1.7rem;
     font-size: 1.6rem;
     color: var(--text-color);
     background: rgba(255, 255, 255, 0.02);
@@ -1226,6 +1372,7 @@ span {
 .skills .skills-column,
 .projects .heading,
 .projects .project-card,
+.projects .pdf-viewer-container,
 .veille .heading,
 .veille .veille-card,
 .veille .veille-cta-btn,
@@ -1256,6 +1403,7 @@ span {
 
 .projects .heading       { transition-delay: calc(.12s * 1); }
 .projects .project-card  { transition-delay: calc(.12s * var(--i, 2)); }
+.projects .pdf-viewer-container { transition-delay: calc(.12s * 2); }
 
 .veille .heading         { transition-delay: calc(.12s * 1); }
 .veille .veille-card     { transition-delay: calc(.12s * 2); }
@@ -1278,6 +1426,7 @@ span {
 .skills.show-animate    .skills-column,
 .projects.show-animate  .heading,
 .projects.show-animate  .project-card,
+.projects.show-animate  .pdf-viewer-container,
 .veille.show-animate    .heading,
 .veille.show-animate    .veille-card,
 .veille.show-animate    .veille-cta-btn,
@@ -2083,6 +2232,17 @@ textarea.field-error {
 
 .contact-success h3 {
     font-size: 2.4rem;
+}
+
+.contact-success p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-success .btn {
+    margin-top: 1rem;
+    padding: 1rem 2.8rem;
+    font-size: 1.5rem;
 }
 
 .contact-error {

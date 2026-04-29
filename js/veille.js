@@ -77,3 +77,72 @@ if (tocLinks.length) {
 
     sections.forEach(s => tocObserver.observe(s));
 }
+
+// ── 4. TOC MERGE INTO HEADER ON SCROLL ──────────────────────
+const vpToc = document.querySelector('.vp-toc');
+const vpHeader = document.querySelector('.vp-header');
+
+if (vpToc && vpHeader) {
+    // Clone TOC structure into header
+    const headerTop = document.createElement('div');
+    headerTop.className = 'vp-header-top';
+    const logo = vpHeader.querySelector('.logo');
+    const backBtn = vpHeader.querySelector('.vp-back-btn');
+    headerTop.appendChild(logo.cloneNode(true));
+    headerTop.appendChild(backBtn.cloneNode(true));
+
+    const headerToc = document.createElement('div');
+    headerToc.className = 'vp-header-toc';
+    
+    const tocLabel = document.createElement('span');
+    tocLabel.className = 'vp-toc-label';
+    tocLabel.textContent = 'Sommaire';
+    
+    const tocLinksClone = document.querySelector('.vp-toc-links').cloneNode(true);
+    
+    headerToc.appendChild(tocLabel);
+    headerToc.appendChild(tocLinksClone);
+
+    // Replace header content with new structure
+    vpHeader.innerHTML = '';
+    vpHeader.appendChild(headerTop);
+    vpHeader.appendChild(headerToc);
+
+    // Observe TOC position
+    const tocMergeObserver = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) {
+            // TOC scrolled out of view — merge into header
+            vpHeader.classList.add('toc-merged');
+            vpToc.classList.add('hidden');
+            
+            // Sync active states
+            const activeSrc = vpToc.querySelector('.vp-toc-link.active');
+            if (activeSrc) {
+                const href = activeSrc.getAttribute('href');
+                headerToc.querySelectorAll('.vp-toc-link').forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === href);
+                });
+            }
+        } else {
+            // TOC visible — show original TOC
+            vpHeader.classList.remove('toc-merged');
+            vpToc.classList.remove('hidden');
+        }
+    }, { threshold: 0, rootMargin: '-70px 0px 0px 0px' });
+
+    tocMergeObserver.observe(vpToc);
+
+    // Sync active link updates to header TOC
+    const headerTocLinks = headerToc.querySelectorAll('.vp-toc-link');
+    const syncObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            headerTocLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+        });
+    }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+
+    sections.forEach(s => syncObserver.observe(s));
+}
