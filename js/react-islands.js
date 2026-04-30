@@ -1,18 +1,6 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
 import { html } from 'htm/react';
-
-/* ═══════════════════════════════════════
-   HELPERS
-═══════════════════════════════════════ */
-
-function pctToLabel(pct) {
-  if (pct <= 25) return 'Notions';
-  if (pct <= 45) return 'Débutant';
-  if (pct <= 65) return 'Intermédiaire';
-  if (pct <= 80) return 'Avancé';
-  return 'Expert';
-}
 
 /* ═══════════════════════════════════════
    DATA
@@ -110,22 +98,22 @@ const SKILLS_PRO = [
   {
     label: 'Web Design',
     level: 'Débutant',
-    desc: 'Conception d’interfaces responsives en HTML/CSS. Sens de l’esthétique et de l’ergonomie, mais compétence en développement et non en design graphique.'
+    desc: "Conception d'interfaces responsives en HTML/CSS. Sens de l'esthétique et de l'ergonomie, mais compétence en développement et non en design graphique."
   },
   {
     label: 'Gestion de projet',
     level: 'Intermédiaire',
-    desc: 'Expérience en méthodologie Agile/Scrum, gestion de backlog, sprints et revues. Coordination d’équipe sur plusieurs projets étudiants.'
+    desc: "Expérience en méthodologie Agile/Scrum, gestion de backlog, sprints et revues. Coordination d'équipe sur plusieurs projets étudiants."
   },
   {
     label: "Gestion d'incidents",
     level: 'Intermédiaire',
-    desc: 'Diagnostic et résolution de bugs applicatifs, suivi de tickets, documentation des anomalies et communication avec les utilisateurs finaux.'
+    desc: "Diagnostic et résolution de bugs applicatifs, suivi de tickets, documentation des anomalies et communication avec les utilisateurs finaux."
   },
   {
     label: 'Base de données',
     level: 'Avancé',
-    desc: 'Conception de schémas relationnels, requêtes SQL complexes, optimisation des performances. Pratique régulière avec MySQL et PostgreSQL.'
+    desc: "Conception de schémas relationnels, requêtes SQL complexes, optimisation des performances. Pratique régulière avec MySQL et PostgreSQL."
   },
 ];
 
@@ -185,19 +173,18 @@ function ProjectsIsland() {
    SKILLS ISLAND
 ═══════════════════════════════════════ */
 
-function SkillCard({ label, level, desc }) {
+function SkillCard({ label, desc }) {
   return html`
     <div className="skill-card">
       <div className="skill-card-header">
         <span className="skill-card-label">${label}</span>
-        <span className="skill-level" data-level=${level}>${level}</span>
       </div>
       <p className="skill-card-desc">${desc}</p>
     </div>
   `;
 }
 
-function SkillCardCode({ label, level, icon, desc }) {
+function SkillCardCode({ label, icon, desc }) {
   return html`
     <div className="skill-card skill-card--code">
       <div className="skill-card-header">
@@ -205,7 +192,6 @@ function SkillCardCode({ label, level, icon, desc }) {
           <img src=${icon} alt=${label + ' logo'} loading="lazy" />
         </div>
         <span className="skill-card-label">${label}</span>
-        <span className="skill-level" data-level=${level}>${level}</span>
       </div>
       <p className="skill-card-desc">${desc}</p>
     </div>
@@ -213,10 +199,8 @@ function SkillCardCode({ label, level, icon, desc }) {
 }
 
 function SkillsIsland() {
-  const ref = useRef(null);
-
   return html`
-    <div className="skills-row" ref=${ref}>
+    <div className="skills-row">
       <div className="skills-column">
         <h3 className="title">Compétences de codage</h3>
         <div className="skills-box">

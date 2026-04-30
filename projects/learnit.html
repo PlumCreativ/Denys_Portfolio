@@ -5,12 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LearnIt — Plateforme de gestion des formations en Java/MySQL avec méthode Agile/Scrum. Projet BTS SIO SLAM par Denys.">
+    <meta name="description" content="LearnIt — Plateforme de gestion des formations en Java/MySQL avec méthode Agile/Scrum. Projet BTS SIO SLAM par Denys Lyulchak.">
     <title>LearnIt — Denys Portfolio</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-page.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react":            "https://esm.sh/react@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+        "htm/react":        "https://esm.sh/htm@3.1.1/react?external=react"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -24,7 +34,7 @@
 
     <main>
 
-        <!-- Hero -->
+        <!-- ── HERO ── -->
         <section class="project-hero">
             <div class="project-hero-content">
                 <div class="project-meta">
@@ -33,6 +43,7 @@
                         <li>MySQL</li>
                         <li>Maven</li>
                         <li>JDBC</li>
+                        <li>JUnit</li>
                         <li>Agile/Scrum</li>
                     </ul>
                     <a href="https://github.com/Dario-Adg/LearnIt" class="github-link" target="_blank" rel="noopener noreferrer">
@@ -40,75 +51,262 @@
                     </a>
                 </div>
                 <h1>LearnIt</h1>
-                <p class="project-subtitle">Plateforme d'apprentissage en ligne en mode console — Projet collaboratif BTS SIO SLAM (Agile/Scrum)</p>
+                <p class="project-subtitle">Plateforme de gestion des formations et inscriptions — Application console Java avec base MySQL — Projet BTS SIO SLAM (Agile/Scrum)</p>
+
+                <div class="cv-hero-stats">
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">3</span>
+                        <span class="cv-stat-label">Rôles utilisateurs</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">MVC</span>
+                        <span class="cv-stat-label">Architecture</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">Scrum</span>
+                        <span class="cv-stat-label">Méthode Agile</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">JUnit</span>
+                        <span class="cv-stat-label">Tests unitaires</span>
+                    </div>
+                </div>
             </div>
             <div class="project-hero-img">
-                <img src="../img/Learnit.png" alt="Capture d'écran de l'application LearnIt" loading="eager">
+                <img src="../img/Learnit.png" alt="Aperçu de l'application LearnIt" loading="eager">
             </div>
         </section>
 
-        <!-- Content -->
+        <!-- ── GALLERY ── -->
+        <section class="cv-gallery-section">
+            <div class="cv-gallery-inner">
+                <h2 class="cv-gallery-title">
+                    <i class="bx bx-images" aria-hidden="true"></i>
+                    Captures d'écran
+                </h2>
+                <p class="cv-gallery-subtitle">Défilement automatique · Naviguez avec les flèches</p>
+                <div id="learnit-gallery"></div>
+            </div>
+        </section>
+
+        <!-- ── CONTENT ── -->
         <div class="project-content">
             <div class="project-sections">
 
+                <!-- Vue d'ensemble -->
                 <div class="project-section">
-                    <h2>À propos</h2>
+                    <h2>Vue d'ensemble</h2>
                     <p>
-                        <strong>LearnIt</strong> est une plateforme d'apprentissage en ligne fonctionnant en
-                        <strong>mode console (CLI)</strong>. Elle permet aux formateurs et étudiants de créer,
-                        gérer et suivre des cours de manière efficace via une interface textuelle intuitive.
+                        <strong>LearnIt</strong> est une plateforme de gestion des formations développée
+                        en <strong>Java</strong> avec une interface <strong>console (CLI)</strong>.
+                        Elle permet aux formateurs de créer et structurer des cours, aux étudiants
+                        de s'inscrire et suivre leur progression, et aux administrateurs de gérer
+                        l'ensemble de la plateforme.
                     </p>
                     <p>
-                        Ce projet a été développé <strong>en groupe</strong> avec la <strong>méthode Agile (Scrum)</strong>,
-                        apportant une dimension collaborative et professionnelle. Développé en BTS SIO SLAM, spécialité
-                        SLAM — Solutions Logicielles et Applications Métier.
+                        Développé en équipe avec la méthode <strong>Agile Scrum</strong> dans le cadre
+                        du BTS SIO SLAM, le projet met en œuvre une architecture MVC claire, un accès
+                        base de données via <strong>JDBC/PDO</strong> et des tests unitaires JUnit.
                     </p>
+
+                    <div class="cv-overview-cards">
+                        <div class="cv-overview-card">
+                            <i class="bx bxl-java" aria-hidden="true"></i>
+                            <div>
+                                <h3>Application Java</h3>
+                                <p>Java JDK 17+ · Interface console CLI · Architecture MVC · Build Maven</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bx-data" aria-hidden="true"></i>
+                            <div>
+                                <h3>Base MySQL</h3>
+                                <p>MySQL 8.0 · Modélisation Merise (MCD→MPD) · Accès JDBC · Requêtes préparées</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bx-group" aria-hidden="true"></i>
+                            <div>
+                                <h3>Projet collaboratif</h3>
+                                <p>Méthode Scrum · Sprints · Backlog · Git / GitHub · Code reviews</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Fonctionnalités -->
                 <div class="project-section">
-                    <h2>Fonctionnalités</h2>
-                    <ul>
-                        <li>Authentification multi-rôles : Étudiant, Formateur, Administrateur</li>
-                        <li>Création et structuration de cours (modules, leçons, ressources)</li>
-                        <li>Suivi de la progression des étudiants (tableau de bord personnalisé)</li>
-                        <li>Évaluations et quiz intégrés avec notation automatique</li>
-                        <li>Gestion des inscriptions et des groupes d'apprenants</li>
-                        <li>Rapports formateur : statistiques, taux de réussite, analyse temporelle</li>
-                        <li>Administration complète : approbation de cours, gestion des utilisateurs</li>
-                        <li>Navigation au clavier intuitive avec menus contextuels selon le rôle</li>
-                    </ul>
+                    <h2>Fonctionnalités principales</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                LearnIt couvre l'ensemble du cycle pédagogique : de la création de formations
+                                à l'évaluation des apprenants, en passant par la gestion des inscriptions
+                                et le suivi de progression.
+                            </p>
+                            <ul>
+                                <li>Authentification multi-rôles : Étudiant, Formateur, Administrateur</li>
+                                <li>Création et structuration de cours (modules, leçons, ressources)</li>
+                                <li>Suivi de la progression des étudiants avec tableau de bord personnalisé</li>
+                                <li>Évaluations et quiz intégrés avec notation automatique</li>
+                                <li>Gestion des inscriptions et des groupes d'apprenants</li>
+                                <li>Rapports formateur : statistiques, taux de réussite, analyse temporelle</li>
+                                <li>Administration complète : approbation de cours, gestion des utilisateurs</li>
+                                <li>Navigation au clavier intuitive avec menus contextuels selon le rôle</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/LearnIt/Module.png"
+                                 alt="Interface de gestion des modules LearnIt"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Gestion des modules — création et structuration</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Connexion & rôles -->
+                <div class="project-section">
+                    <h2>Connexion &amp; gestion des rôles</h2>
+                    <div class="cv-split cv-split--reverse">
+                        <div class="cv-img-aside">
+                            <img src="../img/LearnIt/Connexion.png"
+                                 alt="Écran de connexion LearnIt"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Écran de connexion — authentification par rôle</span>
+                        </div>
+                        <div>
+                            <p>
+                                Le système d'authentification distingue <strong>3 profils</strong> avec
+                                des accès et menus entièrement différenciés. Chaque rôle dispose d'une
+                                interface console adaptée à ses responsabilités.
+                            </p>
+                            <ul>
+                                <li><strong>Étudiant</strong> — Consulter les formations disponibles, s'inscrire, suivre sa progression, passer les évaluations</li>
+                                <li><strong>Formateur</strong> — Créer et éditer les cours, définir les modules et leçons, consulter les statistiques de ses apprenants</li>
+                                <li><strong>Administrateur</strong> — Approuver les cours, gérer tous les utilisateurs, accéder aux rapports globaux de la plateforme</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architecture MVC -->
                 <div class="project-section">
                     <h2>Architecture MVC</h2>
                     <p>
                         Le projet suit l'architecture <strong>MVC (Model-View-Controller)</strong> adaptée
-                        à une application console. Chaque couche est clairement séparée pour garantir
-                        la maintenabilité et la testabilité du code.
+                        à une application console Java. Chaque couche est clairement séparée pour garantir
+                        la maintenabilité, la testabilité et l'extensibilité du code.
                     </p>
-                    <ul>
-                        <li><strong>View (Console)</strong> — Affichage textuel, saisie utilisateur, menus ASCII</li>
-                        <li><strong>Controller</strong> — Logique métier, coordination des composants</li>
-                        <li><strong>Model</strong> — Entités métier, accès base de données via JDBC</li>
-                        <li>Gestion de projet Maven avec dépendances centralisées (pom.xml)</li>
+
+                    <div class="cv-arch-flow">
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bx-terminal" aria-hidden="true"></i>
+                                View (Console)
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">Menus ASCII contextuels</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Saisie utilisateur (Scanner)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">Affichage tabulaire formaté</div>
+                            </div>
+                        </div>
+
+                        <div class="cv-arch-separator">
+                            <i class="bx bx-transfer-alt" aria-hidden="true"></i>
+                            <span>Appels méthodes</span>
+                        </div>
+
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bxl-java" aria-hidden="true"></i>
+                                Controller → Model
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">Controllers (logique métier)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Entités Java (POJOs)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">DAOs (requêtes JDBC)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">MySQL 8.0 via JDBC</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul style="margin-top:2rem">
+                        <li>Requêtes préparées (<code>PreparedStatement</code>) — protection contre les injections SQL</li>
+                        <li>Pattern DAO — accès base de données isolé, facilement testable et remplaçable</li>
+                        <li>Gestion de projet Maven avec <code>pom.xml</code> centralisé (JDBC, JUnit)</li>
                     </ul>
                 </div>
 
+                <!-- Modèle de données -->
                 <div class="project-section">
-                    <h2>Méthode Agile</h2>
-                    <p>
-                        Le projet a été réalisé avec la méthode <strong>Scrum</strong> en équipe :
-                        sprints itératifs, backlog produit, rétrospectives. Cette approche a permis
-                        d'intégrer les retours en continu et de livrer des fonctionnalités incrémentales.
-                    </p>
-                    <ul>
-                        <li>Organisation en sprints avec backlog priorisé</li>
-                        <li>Daily standups et rétrospectives d'équipe</li>
-                        <li>Collaboration via Git (branches, pull requests, code reviews)</li>
-                        <li>Gestion des exigences métier et arbitrages fonctionnels</li>
-                    </ul>
+                    <h2>Modèle Physique de Données</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                La base de données a été conçue avec la méthode <strong>Merise</strong>
+                                (MCD → MLD → MPD). Le MPD final définit l'ensemble des tables, clés
+                                primaires, clés étrangères et contraintes d'intégrité.
+                            </p>
+                            <ul>
+                                <li>Tables principales : <code>utilisateur</code>, <code>formation</code>, <code>module</code>, <code>lecon</code></li>
+                                <li>Tables de liaison : <code>inscription</code>, <code>progression</code>, <code>evaluation</code></li>
+                                <li>Contraintes <code>CASCADE</code> sur les suppressions pour l'intégrité des données</li>
+                                <li>Index sur les colonnes de jointure fréquentes pour les performances</li>
+                                <li>Clés étrangères explicites respectant la 3NF</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/LearnIt/LearnIt_MPD.jpg"
+                                 alt="Modèle Physique de Données LearnIt"
+                                 loading="lazy">
+                            <span class="cv-img-caption">MPD — modélisation Merise complète</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Méthode Agile -->
+                <div class="project-section">
+                    <h2>Méthode Agile / Scrum</h2>
+                    <div class="cv-security-grid">
+                        <div class="cv-sec-card">
+                            <i class="bx bx-list-ul" aria-hidden="true"></i>
+                            <h3>Product Backlog</h3>
+                            <p>User stories priorisées par valeur métier. Backlog affiné à chaque sprint.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-time" aria-hidden="true"></i>
+                            <h3>Sprints itératifs</h3>
+                            <p>Cycles courts avec livraison incrémentale de fonctionnalités testables.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-conversation" aria-hidden="true"></i>
+                            <h3>Daily standups</h3>
+                            <p>Synchronisation quotidienne : avancement, blocages, coordination d'équipe.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-git-branch" aria-hidden="true"></i>
+                            <h3>Git collaboratif</h3>
+                            <p>Branches par fonctionnalité, pull requests et code reviews systématiques.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-analyse" aria-hidden="true"></i>
+                            <h3>Rétrospectives</h3>
+                            <p>Bilan d'équipe à chaque sprint — identification des axes d'amélioration.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-check-shield" aria-hidden="true"></i>
+                            <h3>Tests JUnit</h3>
+                            <p>Tests unitaires sur la logique métier — non-régression assurée entre sprints.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technologies -->
                 <div class="project-section">
                     <h2>Technologies utilisées</h2>
                     <table class="tech-table">
@@ -121,14 +319,30 @@
                         </thead>
                         <tbody>
                             <tr><td>Langage</td><td>Java</td><td>JDK 17+</td></tr>
-                            <tr><td>Base de données</td><td>MySQL</td><td>8.0+</td></tr>
-                            <tr><td>Connecteur BD</td><td>MySQL JDBC</td><td>8.0.33</td></tr>
-                            <tr><td>Gestion de projet</td><td>Maven</td><td>3.6+</td></tr>
-                            <tr><td>Tests</td><td>JUnit</td><td>4.13.2</td></tr>
                             <tr><td>Interface</td><td>Console / CLI</td><td>—</td></tr>
-                            <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
+                            <tr><td>Base de données</td><td>MySQL</td><td>8.0+</td></tr>
+                            <tr><td>Connecteur BD</td><td>MySQL JDBC Connector</td><td>8.0.33</td></tr>
+                            <tr><td>Build & dépendances</td><td>Maven</td><td>3.6+</td></tr>
+                            <tr><td>Tests unitaires</td><td>JUnit</td><td>4.13.2</td></tr>
+                            <tr><td>Modélisation BD</td><td>Merise (MCD → MPD)</td><td>—</td></tr>
+                            <tr><td>Versionning</td><td>Git / GitHub</td><td>—</td></tr>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Compétences -->
+                <div class="project-section">
+                    <h2>Compétences mobilisées</h2>
+                    <ul>
+                        <li>Concevoir une architecture MVC en Java avec séparation stricte des couches</li>
+                        <li>Implémenter le pattern DAO avec JDBC et requêtes préparées sécurisées</li>
+                        <li>Modéliser une base de données relationnelle avec la méthode Merise (MCD→MPD)</li>
+                        <li>Gérer un projet collaboratif en équipe avec la méthode Agile Scrum</li>
+                        <li>Écrire et maintenir des tests unitaires JUnit sur la logique métier</li>
+                        <li>Utiliser Maven pour la gestion des dépendances et du build Java</li>
+                        <li>Contribuer à un projet sur GitHub (branches, pull requests, code reviews)</li>
+                        <li>Concevoir une interface console intuitive avec navigation par rôles</li>
+                    </ul>
                 </div>
 
             </div>
@@ -137,11 +351,13 @@
     </main>
 
     <footer class="project-footer">
-        <p>Projet BTS SIO SLAM — Développement collaboratif (Agile/Scrum)</p>
+        <p>Projet BTS SIO SLAM — Développement collaboratif Agile/Scrum</p>
         <a href="../index.html#projects">
             <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
         </a>
     </footer>
+
+    <script type="module" src="../js/learnit-react.js"></script>
 
 </body>
 
