@@ -1216,6 +1216,7 @@ body {
 
     .footer-legal-links ul {
         flex-direction: row;
+        justify-content: center;
         flex-wrap: wrap;
         gap: .4rem 1.6rem;
     }

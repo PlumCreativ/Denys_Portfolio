@@ -104,13 +104,13 @@ const SKILLS_PRO = [
   {
     label: 'Gestion de projet',
     level: 'Intermédiaire',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-original.svg',
     desc: "Expérience en méthodologie Agile/Scrum, gestion de backlog, sprints et revues. Coordination d'équipe sur plusieurs projets étudiants."
   },
   {
     label: "Gestion d'incidents",
     level: 'Intermédiaire',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg',
+    icon: 'img/semgrep.png',
     desc: "Diagnostic et résolution de bugs applicatifs, suivi de tickets, documentation des anomalies et communication avec les utilisateurs finaux."
   },
   {
