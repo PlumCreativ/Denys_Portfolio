@@ -1312,13 +1312,13 @@ body {
 }
 
 .animate.home-img {
-    width: 50%;
+    display: none;
 }
 
 .logo .animate,
 .navbar .animate,
 #menu-icon .animate,
-.home.show-animate .animate {
+.home.show-animate .animate:not(.home-img) {
     animation: showRight 1s ease forwards;
     animation-delay: calc(.3s * var(--i));
 }
@@ -1419,7 +1419,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 2rem;
+    gap: 8rem;
     padding-bottom: 6rem;
 }
 
@@ -1967,6 +1967,22 @@ body {
     }
 }
 
+/* ── home-img : voile initial → révélation après toutes les animations ── */
+@keyframes homeImgReveal {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.home-img {
+    opacity: 0;
+    animation: homeImgReveal 1.2s ease forwards;
+    animation-delay: 2.8s; /* après --i:6 (1.8s) + durée showRight (1s) */
+}
+
+.home.show-animate .home-img {
+    animation-play-state: running;
+}
+
 /* Accessibilité — respect des préférences système */
 /* ═══════════════════════════════════════
    REACT ISLANDS — PROJECT FILTERS
@@ -2244,5 +2260,235 @@ textarea.field-error {
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+/* ═══════════════════════════════════════
+   STAGE PROJECT — Carte projet professionnel
+   Accent distinct : violet #a855f7
+═══════════════════════════════════════ */
+
+.stage-section {
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+.stage-section__header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.stage-section__label {
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #a855f7;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.stage-section__label i {
+    font-size: 1.6rem;
+}
+
+.stage-section__line {
+    flex: 1;
+    height: .1rem;
+    background: linear-gradient(90deg, rgba(168, 85, 247, .4), transparent);
+}
+
+/* ── Carte principale ── */
+.stage-card {
+    display: flex;
+    gap: 0;
+    border-radius: 1.4rem;
+    overflow: hidden;
+    background: #0d2235;
+    border: .15rem solid rgba(168, 85, 247, .25);
+    box-shadow: 0 0 0 rgba(168, 85, 247, 0);
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.stage-card:hover {
+    transform: translateY(-.5rem);
+    border-color: rgba(168, 85, 247, .7);
+    box-shadow: 0 0 3.5rem rgba(168, 85, 247, .18), 0 .8rem 3rem rgba(0,0,0,.35);
+}
+
+/* Accent barre gauche */
+.stage-card::before {
+    content: '';
+    display: block;
+    width: .45rem;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #a855f7, #7c3aed);
+}
+
+/* ── Image ── */
+.stage-card__img {
+    width: 34rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #081b29;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stage-card__img img {
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    transition: transform .5s ease, filter .5s ease;
+    filter: brightness(.9) saturate(.85);
+}
+
+.stage-card:hover .stage-card__img img {
+    transform: scale(1.06);
+    filter: brightness(1) saturate(1) drop-shadow(0 0 1.6rem rgba(124, 58, 237, .3));
+}
+
+/* ── Body ── */
+.stage-card__body {
+    flex: 1;
+    padding: 3.6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.stage-card__badges {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.stage-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .4rem 1.1rem;
+    border-radius: 2rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.stage-card__badge--stage {
+    background: rgba(168, 85, 247, .15);
+    color: #c084fc;
+    border: .1rem solid rgba(168, 85, 247, .35);
+}
+
+.stage-card__badge--year {
+    background: rgba(0, 171, 240, .1);
+    color: #00abf0;
+    border: .1rem solid rgba(0, 171, 240, .25);
+}
+
+.stage-card__title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.stage-card__company {
+    font-size: 1.45rem;
+    color: #a855f7;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+    margin: -.6rem 0 0;
+}
+
+.stage-card__desc {
+    font-size: 1.5rem;
+    color: #9eaab0;
+    line-height: 1.75;
+    margin: 0;
+}
+
+.stage-card__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stage-card__tech li {
+    padding: .35rem 1rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    background: rgba(168, 85, 247, .1);
+    color: #c084fc;
+    border: .1rem solid rgba(168, 85, 247, .2);
+}
+
+.stage-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    width: fit-content;
+    margin-top: auto;
+    padding: .9rem 2.2rem;
+    border-radius: .8rem;
+    font-size: 1.45rem;
+    font-weight: 600;
+    background: transparent;
+    color: #a855f7;
+    border: .15rem solid rgba(168, 85, 247, .5);
+    transition: background .25s ease, color .25s ease, border-color .25s ease, gap .25s ease;
+}
+
+.stage-card:hover .stage-card__cta {
+    background: rgba(168, 85, 247, .15);
+    border-color: #a855f7;
+    gap: 1rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .stage-card__img {
+        width: 26rem;
+    }
+    .stage-card__body {
+        padding: 2.8rem 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stage-card {
+        flex-direction: column;
+    }
+    .stage-card::before {
+        width: 100%;
+        height: .45rem;
+        background: linear-gradient(90deg, #a855f7, #7c3aed);
+    }
+    .stage-card__img {
+        width: 100%;
+        height: 22rem;
+    }
+    .stage-card__body {
+        padding: 2.4rem 2rem;
+    }
+    .stage-card__title {
+        font-size: 2.2rem;
     }
 }

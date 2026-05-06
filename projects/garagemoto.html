@@ -11,12 +11,22 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-page.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react":            "https://esm.sh/react@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+        "htm/react":        "https://esm.sh/htm@3.1.1/react?external=react"
+      }
+    }
+    </script>
 </head>
 
 <body>
 
     <header class="project-page-header">
-        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html" class="logo">_Denys</a>
         <a href="../index.html#projects" class="back-btn">
             <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
         </a>
@@ -45,6 +55,18 @@
             </div>
             <div class="project-hero-img">
                 <img src="../img/GarageMoto.png" alt="Capture d'écran de l'application GarageMoto" loading="eager">
+            </div>
+        </section>
+
+        <!-- ── GALLERY ── -->
+        <section class="cv-gallery-section">
+            <div class="cv-gallery-inner">
+                <h2 class="cv-gallery-title">
+                    <i class="bx bx-images" aria-hidden="true"></i>
+                    Captures d'écran
+                </h2>
+                <p class="cv-gallery-subtitle">Modélisation de la base de données</p>
+                <div id="gm-gallery"></div>
             </div>
         </section>
 
@@ -147,6 +169,35 @@
                     </ul>
                 </div>
 
+                <!-- Modèle Physique de Données -->
+                <div class="project-section">
+                    <h2>Modèle Physique de Données</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                La base de données a été conçue avec la méthode <strong>Merise</strong>
+                                (MCD → MLD → MPD). Le MPD définit l'ensemble des tables, clés primaires,
+                                clés étrangères et contraintes d'intégrité du système de gestion du garage.
+                            </p>
+                            <ul>
+                                <li>Table <code>utilisateur</code> — authentification avec rôles (<code>ADMIN</code>, <code>MECANICIEN</code>, <code>RECEPTION</code>), mots de passe hachés</li>
+                                <li>Table <code>client</code> — fiches clients avec coordonnées complètes</li>
+                                <li>Table <code>rendez_vous</code> — planification avec clé étrangère <code>client</code></li>
+                                <li>Table <code>reparation</code> — interventions liées aux rendez-vous</li>
+                                <li>Table <code>piece</code> — catalogue avec prix unitaire et traçabilité par réparation</li>
+                                <li>Contraintes <code>CASCADE</code> sur les suppressions pour l'intégrité référentielle</li>
+                                <li>Respect de la <strong>3NF</strong> — dépendances fonctionnelles directes</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/MPD.jpg"
+                                 alt="Modèle Physique de Données GarageMoto"
+                                 loading="lazy">
+                            <span class="cv-img-caption">MPD — modélisation Merise de la base de données</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="project-section">
                     <h2>Technologies utilisées</h2>
                     <table class="tech-table">
@@ -195,6 +246,7 @@
         </a>
     </footer>
 
+    <script type="module" src="../js/garagemoto-react.js"></script>
 </body>
 
 </html>

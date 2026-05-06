@@ -98,21 +98,25 @@ const SKILLS_PRO = [
   {
     label: 'Web Design',
     level: 'Débutant',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
     desc: "Conception d'interfaces responsives en HTML/CSS. Sens de l'esthétique et de l'ergonomie, mais compétence en développement et non en design graphique."
   },
   {
     label: 'Gestion de projet',
     level: 'Intermédiaire',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
     desc: "Expérience en méthodologie Agile/Scrum, gestion de backlog, sprints et revues. Coordination d'équipe sur plusieurs projets étudiants."
   },
   {
     label: "Gestion d'incidents",
     level: 'Intermédiaire',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg',
     desc: "Diagnostic et résolution de bugs applicatifs, suivi de tickets, documentation des anomalies et communication avec les utilisateurs finaux."
   },
   {
     label: 'Base de données',
     level: 'Avancé',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
     desc: "Conception de schémas relationnels, requêtes SQL complexes, optimisation des performances. Pratique régulière avec MySQL et PostgreSQL."
   },
 ];
@@ -173,10 +177,13 @@ function ProjectsIsland() {
    SKILLS ISLAND
 ═══════════════════════════════════════ */
 
-function SkillCard({ label, desc }) {
+function SkillCard({ label, icon, desc }) {
   return html`
-    <div className="skill-card">
+    <div className="skill-card skill-card--code">
       <div className="skill-card-header">
+        <div className="skill-lang-icon">
+          <img src=${icon} alt=${label + ' logo'} loading="lazy" />
+        </div>
         <span className="skill-card-label">${label}</span>
       </div>
       <p className="skill-card-desc">${desc}</p>
@@ -214,7 +221,7 @@ function SkillsIsland() {
         <h3 className="title">Compétences Professionnelles</h3>
         <div className="skills-box">
           <div className="skills-content">
-            ${SKILLS_PRO.map(s => html`<${SkillCard} key=${s.label} label=${s.label} level=${s.level} desc=${s.desc} />`)}
+            ${SKILLS_PRO.map(s => html`<${SkillCard} key=${s.label} label=${s.label} icon=${s.icon} desc=${s.desc} />`)}
           </div>
         </div>
       </div>

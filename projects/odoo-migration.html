@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Migration de données Odoo — Outil Python de traitement Excel et synchronisation BatAppli vers Odoo ERP via API XML-RPC. Stage professionnel chez Pluvitec par Denys.">
+    <title>Migration Odoo — Denys Portfolio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        /* ── Accents spécifiques page stage (violet Odoo) ── */
+        .odoo-accent      { color: #a855f7; }
+        .tech-tags li.tag--stage {
+            background: rgba(168, 85, 247, .15);
+            color: #c084fc;
+            border: .1rem solid rgba(168, 85, 247, .3);
+        }
+        .stage-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .45rem 1.2rem;
+            border-radius: 2rem;
+            background: rgba(168, 85, 247, .15);
+            color: #c084fc;
+            border: .1rem solid rgba(168, 85, 247, .35);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 1.2rem;
+        }
+        .cv-hero-stats .cv-stat-value { color: #a855f7; }
+        .cv-arch-step--accent { background: rgba(168, 85, 247, .18); color: #c084fc; border-color: rgba(168, 85, 247, .4); }
+        .cv-arch-separator { color: #a855f7; border-color: rgba(168, 85, 247, .2); }
+        .cv-arch-separator i { color: #a855f7; }
+        .github-link {
+            background: rgba(168, 85, 247, .12);
+            color: #c084fc;
+            border: .1rem solid rgba(168, 85, 247, .3);
+        }
+        .github-link:hover { background: rgba(168, 85, 247, .25); }
+
+        /* Grille CLI commandes */
+        .cli-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+            gap: 1.6rem;
+            margin-top: 2rem;
+        }
+        .cli-card {
+            background: #0d2235;
+            border: .1rem solid rgba(168, 85, 247, .2);
+            border-radius: 1rem;
+            padding: 2rem 2.2rem;
+        }
+        .cli-card__cmd {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #a855f7;
+            background: rgba(168, 85, 247, .1);
+            padding: .3rem .8rem;
+            border-radius: .4rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .cli-card__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: .6rem;
+        }
+        .cli-card__output {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: .8rem;
+        }
+        .cli-card p {
+            font-size: 1.4rem;
+            color: #9eaab0;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Code block */
+        .code-block {
+            background: #050f1a;
+            border: .1rem solid rgba(168, 85, 247, .15);
+            border-radius: .8rem;
+            padding: 2rem 2.4rem;
+            overflow-x: auto;
+            margin-top: 1.6rem;
+        }
+        .code-block pre {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.3rem;
+            color: #c084fc;
+            margin: 0;
+            line-height: 1.7;
+            white-space: pre;
+        }
+        .code-block pre .comment { color: #4a5568; }
+        .code-block pre .key     { color: #a855f7; }
+        .code-block pre .str     { color: #86efac; }
+    </style>
+</head>
+
+<body>
+
+    <header class="project-page-header">
+        <a href="../index.html" class="logo">_Denys</a>
+        <a href="../index.html#projects" class="back-btn">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </header>
+
+    <main>
+
+        <!-- ── HERO ── -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <div class="stage-badge">
+                    <i class='bx bx-briefcase-alt-2'></i>
+                    Stage Professionnel · Pluvitec · 2026
+                </div>
+                <div class="project-meta">
+                    <ul class="tech-tags">
+                        <li class="tag--stage">Python</li>
+                        <li class="tag--stage">Odoo ERP</li>
+                        <li class="tag--stage">XML-RPC</li>
+                        <li class="tag--stage">pandas</li>
+                        <li class="tag--stage">openpyxl</li>
+                        <li class="tag--stage">CLI</li>
+                    </ul>
+                </div>
+                <h1>Migration de données Odoo</h1>
+                <p class="project-subtitle">Outil Python de synchronisation BatAppli → Odoo ERP via API XML-RPC — Stage professionnel chez Exaltech</p>
+
+                <div class="cv-hero-stats">
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">8</span>
+                        <span class="cv-stat-label">Commandes CLI</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">4</span>
+                        <span class="cv-stat-label">Sources Excel</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">XML‑RPC</span>
+                        <span class="cv-stat-label">API Odoo</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">3</span>
+                        <span class="cv-stat-label">Modèles Odoo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-hero-img">
+                <img src="../img/Odoo-Erp-CRM.png" alt="Interface Odoo ERP CRM" loading="eager">
+            </div>
+        </section>
+
+        <!-- ── CONTENT ── -->
+        <div class="project-content">
+            <div class="project-sections">
+
+                <!-- Contexte métier -->
+                <div class="project-section">
+                    <h2>Contexte métier</h2>
+                    <p>
+                        <strong>Pluvitec</strong> est une entreprise du secteur de la construction (étanchéité, toiture).
+                        Ses données produits sont gérées dans deux systèmes distincts qui ne communiquent pas nativement :
+                    </p>
+
+                    <div class="cv-overview-cards">
+                        <div class="cv-overview-card">
+                            <i class="bx bx-data" aria-hidden="true"></i>
+                            <div>
+                                <h3>BatAppli</h3>
+                                <p>Logiciel métier — catalogue d'articles et d'ouvrages (prix, unités, compositions)</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bx-cube-alt" aria-hidden="true"></i>
+                            <div>
+                                <h3>Odoo ERP</h3>
+                                <p>ERP central — produits, nomenclatures BoM, fournisseurs et prix de vente/coût</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bx-transfer-alt" aria-hidden="true"></i>
+                            <div>
+                                <h3>Synchronisation</h3>
+                                <p>Génération de fichiers Excel d'import compatibles avec le module natif Odoo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top:2rem">
+                        L'objectif est de <strong>synchroniser les données BatAppli vers Odoo</strong> en croisant
+                        quatre sources Excel via la clé <code>IdBatAppli</code>, puis en générant des fichiers
+                        d'importation standardisés prêts à charger dans Odoo.
+                    </p>
+                </div>
+
+                <!-- Architecture -->
+                <div class="project-section">
+                    <h2>Architecture</h2>
+                    <p>
+                        Le projet suit une <strong>architecture orientée commandes (Action Pattern)</strong>.
+                        Chaque commande est un module Python découvert <em>dynamiquement</em> au démarrage
+                        via <code>pkgutil.iter_modules</code> — aucune modification de <code>main.py</code>
+                        n'est nécessaire pour ajouter une nouvelle commande.
+                    </p>
+
+                    <div class="cv-arch-flow">
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bxl-python" aria-hidden="true"></i>
+                                Entrées
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">Articles Excel (BatAppli)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Ouvrages Excel (BatAppli)</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Mapping Odoo ↔ BatAppli</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">Clé : IdBatAppli</div>
+                            </div>
+                        </div>
+
+                        <div class="cv-arch-separator">
+                            <i class="bx bx-transfer-alt" aria-hidden="true"></i>
+                            <span>Action CLI</span>
+                        </div>
+
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bx-cube-alt" aria-hidden="true"></i>
+                                Sorties
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">API Odoo XML-RPC</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Classes Articles / Ouvrages / Mapping</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">product_service.py</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">Excel Output/ + JSON</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul style="margin-top:2rem">
+                        <li>Point d'entrée unique <code>main.py</code> avec chargement dynamique des modules <code>actions/</code></li>
+                        <li>Chaque action déclare <code>register()</code> (CLI) et <code>run()</code> (logique métier)</li>
+                        <li>Logging dual synchrone : console + fichier <code>logs/Log_Generation_BoM.log</code></li>
+                        <li>Configuration via <code>.env</code> — aucun secret en dur dans le code</li>
+                    </ul>
+                </div>
+
+                <!-- Commandes CLI -->
+                <div class="project-section">
+                    <h2>Commandes CLI disponibles</h2>
+                    <p>
+                        Toutes les commandes s'exécutent via <code style="color:#a855f7">python main.py &lt;commande&gt;</code>.
+                        Chaque commande produit un fichier Excel d'import dans <code>Output/</code>.
+                    </p>
+
+                    <div class="cli-grid">
+                        <div class="cli-card">
+                            <span class="cli-card__cmd">gen_bom_import</span>
+                            <div class="cli-card__title">Nomenclatures BoM</div>
+                            <div class="cli-card__output">→ Output/BomImport.xlsx</div>
+                            <p>Génère le fichier d'import des nomenclatures Odoo en croisant ouvrages, articles et mapping via <code>IdBatAppli</code>.</p>
+                        </div>
+                        <div class="cli-card">
+                            <span class="cli-card__cmd">gen_provider_price_import</span>
+                            <div class="cli-card__title">Prix fournisseurs</div>
+                            <div class="cli-card__output">→ Output/ProviderPriceImport.xlsx</div>
+                            <p>Importe les <code>seller_ids</code> Odoo depuis les données BatAppli (référence DALALU, prix, quantités min).</p>
+                        </div>
+                        <div class="cli-card">
+                            <span class="cli-card__cmd">gen_article_cost_price_import</span>
+                            <div class="cli-card__title">Prix de coût articles</div>
+                            <div class="cli-card__output">→ Output/ArticleCostPriceImport.xlsx</div>
+                            <p>Aligne le <code>standard_price</code> Odoo sur le prix fournisseur actuel. N'exporte que les lignes divergentes.</p>
+                        </div>
+                        <div class="cli-card">
+                            <span class="cli-card__cmd">gen_article_sell_price_import</span>
+                            <div class="cli-card__title">Prix de vente articles</div>
+                            <div class="cli-card__output">→ Output/ArticleSellPriceImport.xlsx</div>
+                            <p>Aligne le <code>list_price</code> sur le coût pour les articles dont le prix de vente dépasse le coût.</p>
+                        </div>
+                        <div class="cli-card">
+                            <span class="cli-card__cmd">gen_bom_price_analysis</span>
+                            <div class="cli-card__title">Analyse prix BoM</div>
+                            <div class="cli-card__output">→ Output/ProviderBoMPriceAnalysis.xlsx</div>
+                            <p>Compare le coût recalculé des BoM (∑ composants × prix) au <code>list_price</code> actuel dans Odoo.</p>
+                        </div>
+                        <div class="cli-card">
+                            <span class="cli-card__cmd">gen_odoo_analysis</span>
+                            <div class="cli-card__title">Analyse complète Odoo</div>
+                            <div class="cli-card__output">→ Output/OdooAnalysis.xlsx (3 feuilles)</div>
+                            <p>Rapport multi-feuilles : produits + indicateurs BoM, coûts comparés, détail ligne par ligne des composants.</p>
+                        </div>
+                        <div class="cli-card">
+                            <span class="cli-card__cmd">product_analysis</span>
+                            <div class="cli-card__title">Qualité des produits</div>
+                            <div class="cli-card__output">→ logs (pas de fichier)</div>
+                            <p>Détecte les noms de produits Odoo en doublon (&gt; 2 occurrences) — résultats dans les logs.</p>
+                        </div>
+                        <div class="cli-card">
+                            <span class="cli-card__cmd">action_exemple</span>
+                            <div class="cli-card__title">Template commande</div>
+                            <div class="cli-card__output">→ extensible</div>
+                            <p>Template prêt à copier pour ajouter une nouvelle commande. Découverte automatique sans modifier <code>main.py</code>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intégration Odoo XML-RPC -->
+                <div class="project-section">
+                    <h2>Intégration API Odoo XML-RPC</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                Le client <code>OdooAPI</code> s'authentifie automatiquement à l'instanciation
+                                via le endpoint standard Odoo <code>/xmlrpc/2/common</code> et expose une interface
+                                générique pour interroger n'importe quel modèle Odoo.
+                            </p>
+                            <ul>
+                                <li>Authentification <code>authenticate()</code> → stockage de l'<code>uid</code> et du proxy <code>models</code></li>
+                                <li>Méthode générique <code>_execute(model, method, *args)</code> — appel <code>execute_kw</code></li>
+                                <li><code>search_read()</code> — recherche + lecture en une requête</li>
+                                <li><code>export_odoo_products()</code> — export complet <code>product.template</code> avec 30+ champs (prix, fournisseurs, variantes…)</li>
+                                <li><code>get_boms_with_costs()</code> — récupère les BoM <code>mrp.bom</code> et leurs composants <code>mrp.bom.line</code></li>
+                                <li>Sauvegarde automatique en JSON : <code>OdooApiProducts.json</code>, <code>OdooApiResult.json</code></li>
+                            </ul>
+                            <p style="margin-top:1.6rem"><strong>Modèles Odoo interrogés :</strong></p>
+                            <ul>
+                                <li><code>product.template</code> — gabarit de produit</li>
+                                <li><code>mrp.bom</code> — nomenclature (Bill of Materials)</li>
+                                <li><code>mrp.bom.line</code> — ligne de nomenclature (composant)</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside" style="background:#050f1a; border-radius:1rem; padding:2.4rem; border:.1rem solid rgba(168,85,247,.15)">
+                            <p style="font-size:1.25rem;color:#64748b;font-family:monospace;margin-bottom:1rem"># Configuration .env</p>
+                            <p style="font-family:monospace;font-size:1.3rem;line-height:2;color:#c084fc;margin:0">
+                                ODOO_URL=<span style="color:#86efac">https://instance.odoo.com</span><br>
+                                ODOO_DB=<span style="color:#86efac">nom_base</span><br>
+                                ODOO_USER=<span style="color:#86efac">email@domaine.com</span><br>
+                                ODOO_API=<span style="color:#86efac">cle_api_securisee</span>
+                            </p>
+                            <hr style="border-color:rgba(168,85,247,.15);margin:1.8rem 0">
+                            <p style="font-size:1.25rem;color:#64748b;font-family:monospace;margin-bottom:1rem"># Flux XML-RPC</p>
+                            <p style="font-family:monospace;font-size:1.3rem;line-height:2;color:#a855f7;margin:0">
+                                POST /xmlrpc/2/common<br>
+                                &nbsp;&nbsp;→ authenticate() → uid<br>
+                                POST /xmlrpc/2/object<br>
+                                &nbsp;&nbsp;→ execute_kw()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flux de données -->
+                <div class="project-section">
+                    <h2>Flux de données</h2>
+                    <p>
+                        La clé de jointure <code>IdBatAppli</code> est le pivot central reliant
+                        les identifiants internes Odoo (<code>product.template.id</code>) aux données
+                        BatAppli (articles, ouvrages, prix).
+                    </p>
+
+                    <div class="cv-security-grid">
+                        <div class="cv-sec-card">
+                            <i class="bx bx-table" aria-hidden="true"></i>
+                            <h3>Articles.py</h3>
+                            <p>Charge la feuille BatAppli. Retourne <code>dict[IdBatAppli → dict]</code> avec prix, unités et références fournisseur.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-layer" aria-hidden="true"></i>
+                            <h3>Ouvrages.py</h3>
+                            <p>Parse les ouvrages composites (identifiés par TVA 20%). Regroupe les articles-composants dans <code>Articles_liste[]</code>.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-git-compare" aria-hidden="true"></i>
+                            <h3>Mapping.py</h3>
+                            <p>Table de correspondance <code>id_odoo ↔ IdBatAppli</code>. Clé de voûte de la jointure entre les deux systèmes.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-math" aria-hidden="true"></i>
+                            <h3>product_service.py</h3>
+                            <p>Calcule le coût d'un ouvrage : <code>∑(prix × quantité)</code>. Convertit unités BatAppli → Odoo (H→h, ML→m, M²→m²).</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-terminal" aria-hidden="true"></i>
+                            <h3>logger.py</h3>
+                            <p>Logging dual synchrone (console + fichier). Flush immédiat après chaque message pour visibilité temps réel.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-export" aria-hidden="true"></i>
+                            <h3>utils.py</h3>
+                            <p>Export Excel multi-feuilles avec freeze panes, auto-filter et ajustement automatique des colonnes (min 8, max 50).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technologies -->
+                <div class="project-section">
+                    <h2>Technologies utilisées</h2>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Technologie</th>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Langage</td><td>Python</td><td>3.x</td></tr>
+                            <tr><td>Manipulation Excel</td><td>pandas</td><td>3.0.0</td></tr>
+                            <tr><td>Écriture Excel avancée</td><td>openpyxl</td><td>3.1.5</td></tr>
+                            <tr><td>Variables d'environnement</td><td>python-dotenv</td><td>1.2.1</td></tr>
+                            <tr><td>API ERP</td><td>Odoo XML-RPC (xmlrpc.client)</td><td>stdlib</td></tr>
+                            <tr><td>Interface CLI</td><td>argparse</td><td>stdlib</td></tr>
+                            <tr><td>Logging</td><td>logging (synchrone)</td><td>stdlib</td></tr>
+                            <tr><td>Sérialisation</td><td>json</td><td>stdlib</td></tr>
+                            <tr><td>Formateur de code</td><td>black</td><td>26.1.0</td></tr>
+                            <tr><td>ERP cible</td><td>Odoo</td><td>17+</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Compétences -->
+                <div class="project-section">
+                    <h2>Compétences mobilisées</h2>
+                    <ul>
+                        <li>Analyser un contexte métier réel et concevoir une solution technique adaptée</li>
+                        <li>Développer un outil Python en ligne de commande avec architecture extensible (Action Pattern)</li>
+                        <li>Intégrer une API ERP tierce via XML-RPC (authentification, recherche, export)</li>
+                        <li>Manipuler et croiser des données multi-sources avec pandas</li>
+                        <li>Générer des fichiers Excel structurés et formatés avec openpyxl</li>
+                        <li>Mettre en place un système de logging synchrone dual (console + fichier)</li>
+                        <li>Appliquer les bonnes pratiques Python : séparation des responsabilités, <code>.env</code>, black</li>
+                        <li>Travailler en contexte professionnel sur un projet à impact métier direct</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        <p>Stage Professionnel · Exaltech — Denys Lyulchak</p>
+        <a href="../index.html#projects">
+            <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
+        </a>
+    </footer>
+
+</body>
+
+</html>

@@ -3,20 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Note de Frais — Application web PHP de gestion des notes de frais professionnelles. Projet BTS SIO SLAM par Denys.">
+    <meta name="description" content="Note de Frais — Application web PHP de gestion des notes de frais professionnelles avec export PDF dompdf. Projet BTS SIO SLAM par Denys.">
     <title>Note de Frais — Denys Portfolio</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-page.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react":            "https://esm.sh/react@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+        "htm/react":        "https://esm.sh/htm@3.1.1/react?external=react"
+      }
+    }
+    </script>
 </head>
 
 <body>
 
     <header class="project-page-header">
-        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html" class="logo">_Denys</a>
         <a href="../index.html#projects" class="back-btn">
             <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
         </a>
@@ -24,7 +33,7 @@
 
     <main>
 
-        <!-- Hero -->
+        <!-- ── HERO ── -->
         <section class="project-hero">
             <div class="project-hero-content">
                 <div class="project-meta">
@@ -34,67 +43,305 @@
                         <li>HTML5</li>
                         <li>CSS3</li>
                         <li>dompdf</li>
+                        <li>Apache</li>
                     </ul>
                     <a href="https://github.com/PlumCreativ/NoteDeFrais" class="github-link" target="_blank" rel="noopener noreferrer">
                         <i class='bx bxl-github' aria-hidden="true"></i> Voir sur GitHub
                     </a>
                 </div>
                 <h1>Note de Frais</h1>
-                <p class="project-subtitle">Application web de gestion des notes de frais professionnelles — Projet BTS SIO SLAM</p>
+                <p class="project-subtitle">Application web PHP de gestion des notes de frais professionnelles avec export PDF — Projet BTS SIO SLAM</p>
+
+                <div class="cv-hero-stats">
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">8</span>
+                        <span class="cv-stat-label">Fonctionnalités</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">PDF</span>
+                        <span class="cv-stat-label">Export dompdf</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">Sessions</span>
+                        <span class="cv-stat-label">Auth PHP</span>
+                    </div>
+                    <div class="cv-stat">
+                        <span class="cv-stat-value">MySQL</span>
+                        <span class="cv-stat-label">Stockage</span>
+                    </div>
+                </div>
             </div>
             <div class="project-hero-img">
                 <img src="../img/NoteDeFrais.png" alt="Capture d'écran de l'application Note de Frais" loading="eager">
             </div>
         </section>
 
-        <!-- Content -->
+        <!-- ── GALLERY ── -->
+        <section class="cv-gallery-section">
+            <div class="cv-gallery-inner">
+                <h2 class="cv-gallery-title">
+                    <i class="bx bx-images" aria-hidden="true"></i>
+                    Captures d'écran
+                </h2>
+                <p class="cv-gallery-subtitle">Défilement automatique · Naviguez avec les flèches</p>
+                <div id="ndf-gallery"></div>
+            </div>
+        </section>
+
+        <!-- ── CONTENT ── -->
         <div class="project-content">
             <div class="project-sections">
 
+                <!-- Vue d'ensemble -->
                 <div class="project-section">
-                    <h2>À propos</h2>
+                    <h2>Vue d'ensemble</h2>
                     <p>
-                        <strong>NoteDeFrais</strong> est une application web développée en PHP permettant aux utilisateurs
-                        de gérer leurs notes de frais professionnelles de manière simple et efficace. L'application offre
-                        un système d'authentification sécurisé, un formulaire de saisie intuitif, et la capacité à
-                        générer des documents PDF récapitulatifs via la librairie <strong>dompdf</strong>.
+                        <strong>Note de Frais</strong> est une application web développée en <strong>PHP procédural</strong>
+                        permettant aux employés de saisir, gérer et exporter leurs notes de frais professionnelles.
+                        L'application couvre l'ensemble du cycle de vie d'une note : création, suivi, modification
+                        et génération d'un document PDF formaté via la librairie <strong>dompdf</strong>.
                     </p>
                     <p>
-                        Développé dans le cadre du <strong>BTS SIO (Services Informatiques aux Organisations)</strong>,
-                        spécialité SLAM — Solutions Logicielles et Applications Métier.
+                        Développé dans le cadre du <strong>BTS SIO SLAM</strong>, ce projet met en pratique
+                        la sécurisation d'une application web PHP, la manipulation de bases de données
+                        relationnelles et la génération dynamique de documents.
                     </p>
+
+                    <div class="cv-overview-cards">
+                        <div class="cv-overview-card">
+                            <i class="bx bxl-php" aria-hidden="true"></i>
+                            <div>
+                                <h3>Backend PHP</h3>
+                                <p>Architecture procédurale · Sessions · Requêtes paramétrées</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bx-file" aria-hidden="true"></i>
+                            <div>
+                                <h3>Export PDF</h3>
+                                <p>dompdf 1.2 · Document A4 professionnel · Impression HTML</p>
+                            </div>
+                        </div>
+                        <div class="cv-overview-card">
+                            <i class="bx bx-shield-quarter" aria-hidden="true"></i>
+                            <div>
+                                <h3>Sécurité</h3>
+                                <p>password_hash · Prévention XSS · Injection SQL bloquée</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Fonctionnalités principales + Menu.png -->
                 <div class="project-section">
-                    <h2>Fonctionnalités</h2>
-                    <ul>
-                        <li>Inscription et connexion sécurisée avec gestion de sessions PHP</li>
-                        <li>Saisie de frais : catégorie, date, description, montant HT/TTC, justificatif</li>
-                        <li>Historique des notes avec filtrage par date, catégorie et montant</li>
-                        <li>Export PDF dynamique via dompdf (document professionnel formaté)</li>
-                        <li>Modification et suppression de notes (avec restrictions selon statut)</li>
-                        <li>Validation des données côté serveur (XSS prevention, SQL injection)</li>
-                        <li>Page d'impression HTML en format A4</li>
-                        <li>Profil utilisateur avec modification de mot de passe</li>
-                    </ul>
+                    <h2>Fonctionnalités principales</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                L'application offre un ensemble complet de fonctionnalités métier couvrant
+                                tout le processus de gestion des frais professionnels, de l'authentification
+                                à l'export du document final.
+                            </p>
+                            <ul>
+                                <li>Inscription et connexion sécurisée avec gestion de <strong>sessions PHP</strong></li>
+                                <li>Saisie de frais : catégorie, date, description, montants <strong>HT / TTC</strong>, justificatif</li>
+                                <li>Historique des notes avec <strong>filtrage</strong> par date, catégorie et montant</li>
+                                <li>Export <strong>PDF dynamique</strong> via dompdf (document professionnel formaté A4)</li>
+                                <li>Modification et suppression de notes (restrictions selon statut)</li>
+                                <li>Validation des données côté serveur — prévention XSS et injection SQL</li>
+                                <li>Page d'impression HTML en format A4 sans dépendance externe</li>
+                                <li>Profil utilisateur avec modification de mot de passe sécurisée</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/NoteDeFrais/Menu.png"
+                                 alt="Menu principal de l'application Note de Frais"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Interface de navigation principale</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formulaire de saisie + Formulaire_NoteDeFrais.png -->
+                <div class="project-section">
+                    <h2>Formulaire de saisie</h2>
+                    <div class="cv-split cv-split--reverse">
+                        <div class="cv-img-aside">
+                            <img src="../img/NoteDeFrais/Formulaire_NoteDeFrais.png"
+                                 alt="Formulaire de saisie d'une note de frais"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Saisie d'une note — montants HT/TTC et catégorie</span>
+                        </div>
+                        <div>
+                            <p>
+                                Le formulaire de saisie est le cœur de l'application. Il guide l'utilisateur
+                                pour renseigner tous les champs nécessaires à la constitution d'une note de
+                                frais conforme aux pratiques comptables.
+                            </p>
+                            <ul>
+                                <li><strong>Catégories</strong> prédéfinies : repas, transport, hébergement, matériel, autre</li>
+                                <li>Calcul automatique <strong>HT → TTC</strong> selon le taux de TVA sélectionné</li>
+                                <li>Date de dépense avec validation de format côté serveur</li>
+                                <li>Description libre pour le motif professionnel du frais</li>
+                                <li>Champ justificatif (référence)</li>
+                                <li>Validation complète côté serveur avant insertion en base</li>
+                                <li>Messages d'erreur contextuels sur chaque champ invalide</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Export PDF + Vue_PDF.png -->
+                <div class="project-section">
+                    <h2>Export PDF via dompdf</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                L'export PDF est généré dynamiquement par la librairie <strong>dompdf 1.2</strong>.
+                                Le document produit est un récapitulatif professionnel format A4, listant
+                                l'ensemble des frais de la période sélectionnée avec les totaux HT et TTC.
+                            </p>
+                            <ul>
+                                <li>Génération à la demande depuis l'historique — filtrage par période</li>
+                                <li>En-tête avec nom de l'utilisateur, date de génération et période couverte</li>
+                                <li>Tableau récapitulatif : date, catégorie, description, HT, TVA, TTC</li>
+                                <li>Ligne de <strong>totaux automatiques</strong> (somme HT et somme TTC)</li>
+                                <li>Mise en page A4 respectant les marges et polices professionnelles</li>
+                                <li>Alternative <strong>impression HTML</strong> directe sans librairie externe</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/NoteDeFrais/Vue_PDF.png"
+                                 alt="Aperçu du document PDF généré par l'application"
+                                 loading="lazy">
+                            <span class="cv-img-caption">Document PDF généré — récapitulatif A4 formaté</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architecture -->
                 <div class="project-section">
                     <h2>Architecture</h2>
                     <p>
-                        L'application suit une architecture <strong>procédurale PHP</strong> avec séparation
-                        des responsabilités entre les pages de traitement et les pages de présentation.
-                        Les mots de passe sont chiffrés avec <code>password_hash()</code> et les requêtes
-                        sont paramétrées pour prévenir les injections SQL.
+                        L'application suit une architecture <strong>PHP procédurale</strong> avec une séparation
+                        nette entre les scripts de traitement (<code>actions/</code>) et les pages de présentation.
+                        Chaque requête HTTP transite par un point d'entrée qui vérifie la session avant d'accéder
+                        aux données.
                     </p>
-                    <ul>
-                        <li>Séparation traitement / présentation (DRY)</li>
-                        <li>Sessions PHP sécurisées avec cookies chiffrés</li>
-                        <li>Requêtes paramétrées (prévention SQL injection)</li>
-                        <li>Hachage des mots de passe avec password_hash() / password_verify()</li>
+
+                    <div class="cv-arch-flow">
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bx-user" aria-hidden="true"></i>
+                                Navigateur
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">Formulaire HTML</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">POST / GET HTTP</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Vérification session</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">Page résultat / PDF</div>
+                            </div>
+                        </div>
+
+                        <div class="cv-arch-separator">
+                            <i class="bx bx-transfer-alt" aria-hidden="true"></i>
+                            <span>Apache / PHP</span>
+                        </div>
+
+                        <div class="cv-arch-col">
+                            <div class="cv-arch-header">
+                                <i class="bx bxl-php" aria-hidden="true"></i>
+                                Backend PHP
+                            </div>
+                            <div class="cv-arch-steps">
+                                <div class="cv-arch-step">Validation &amp; Sanitisation</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">Script de traitement</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step">PDO — Requêtes paramétrées</div>
+                                <div class="cv-arch-arrow"><i class="bx bx-down-arrow-alt"></i></div>
+                                <div class="cv-arch-step cv-arch-step--accent">MySQL</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul style="margin-top:2rem">
+                        <li>Séparation traitement / présentation — principe DRY appliqué</li>
+                        <li>Sessions PHP sécurisées avec vérification systématique à chaque page</li>
+                        <li>Requêtes PDO paramétrées — protection totale contre les injections SQL</li>
+                        <li>Mots de passe hachés avec <code>password_hash()</code> / vérifiés avec <code>password_verify()</code></li>
                     </ul>
                 </div>
 
+                <!-- Modèle Physique de Données -->
+                <div class="project-section">
+                    <h2>Modèle Physique de Données</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                La base de données a été conçue avec la méthode <strong>Merise</strong>
+                                (MCD → MLD → MPD). Le MPD définit l'ensemble des tables, clés primaires,
+                                clés étrangères et contraintes d'intégrité nécessaires à la gestion des notes de frais.
+                            </p>
+                            <ul>
+                                <li>Table <code>utilisateur</code> — identifiant, nom, email, mot de passe haché, rôle</li>
+                                <li>Table <code>note_de_frais</code> — date, catégorie, description, montant HT, TVA, TTC, statut</li>
+                                <li>Table <code>categorie</code> — libellés normalisés (repas, transport, hébergement…)</li>
+                                <li>Clé étrangère <code>note_de_frais.id_utilisateur</code> avec contrainte <code>CASCADE</code></li>
+                                <li>Contraintes <code>NOT NULL</code> et <code>CHECK</code> sur les montants</li>
+                                <li>Respect de la <strong>3NF</strong> — pas de redondance, dépendances fonctionnelles directes</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/NoteDeFrais/MPD.jpg"
+                                 alt="Modèle Physique de Données Note de Frais"
+                                 loading="lazy">
+                            <span class="cv-img-caption">MPD — modélisation Merise de la base de données</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sécurité -->
+                <div class="project-section">
+                    <h2>Sécurité</h2>
+                    <div class="cv-security-grid">
+                        <div class="cv-sec-card">
+                            <i class="bx bx-lock-alt" aria-hidden="true"></i>
+                            <h3>Sessions PHP</h3>
+                            <p>Authentification par sessions côté serveur. Chaque page vérifie la session active avant tout traitement.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-shield-quarter" aria-hidden="true"></i>
+                            <h3>Hachage mots de passe</h3>
+                            <p><code>password_hash()</code> avec bcrypt. Jamais de mot de passe en clair en base de données.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-data" aria-hidden="true"></i>
+                            <h3>Requêtes paramétrées</h3>
+                            <p>Toutes les requêtes SQL utilisent PDO avec des paramètres liés — injection SQL impossible.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-code-alt" aria-hidden="true"></i>
+                            <h3>Prévention XSS</h3>
+                            <p>Échappement systématique des sorties avec <code>htmlspecialchars()</code> avant affichage.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-check-circle" aria-hidden="true"></i>
+                            <h3>Validation serveur</h3>
+                            <p>Chaque champ est validé côté serveur — type, longueur, format — indépendamment du client.</p>
+                        </div>
+                        <div class="cv-sec-card">
+                            <i class="bx bx-user-check" aria-hidden="true"></i>
+                            <h3>Contrôle d'accès</h3>
+                            <p>Un utilisateur ne peut accéder, modifier ou supprimer que ses propres notes de frais.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technologies -->
                 <div class="project-section">
                     <h2>Technologies utilisées</h2>
                     <table class="tech-table">
@@ -108,24 +355,30 @@
                         <tbody>
                             <tr><td>Langage backend</td><td>PHP</td><td>7.4+ / 8.0+</td></tr>
                             <tr><td>Base de données</td><td>MySQL</td><td>5.7+ / 8.0+</td></tr>
+                            <tr><td>Accès données</td><td>PDO (PHP Data Objects)</td><td>—</td></tr>
+                            <tr><td>Modélisation BD</td><td>Merise (MCD → MPD)</td><td>—</td></tr>
                             <tr><td>Serveur web</td><td>Apache</td><td>2.4+</td></tr>
                             <tr><td>Frontend</td><td>HTML5, CSS3</td><td>—</td></tr>
                             <tr><td>Génération PDF</td><td>dompdf</td><td>1.2+</td></tr>
+                            <tr><td>Hachage</td><td>bcrypt via password_hash()</td><td>—</td></tr>
                             <tr><td>Versionning</td><td>Git</td><td>—</td></tr>
                         </tbody>
                     </table>
                 </div>
 
+                <!-- Compétences -->
                 <div class="project-section">
                     <h2>Compétences mobilisées</h2>
                     <ul>
-                        <li>Développer une application web dynamique avec PHP</li>
-                        <li>Implémenter un système d'authentification sécurisé</li>
-                        <li>Gérer des formulaires et valider les données côté serveur</li>
-                        <li>Manipuler une base de données MySQL</li>
-                        <li>Générer des documents PDF dynamiques</li>
-                        <li>Appliquer les bonnes pratiques de sécurité web</li>
-                        <li>Utiliser Git pour le versioning</li>
+                        <li>Développer une application web dynamique avec PHP procédural</li>
+                        <li>Implémenter un système d'authentification sécurisé par sessions</li>
+                        <li>Concevoir une base de données relationnelle avec la méthode Merise (MCD→MPD)</li>
+                        <li>Concevoir et manipuler une base de données relationnelle MySQL</li>
+                        <li>Sécuriser les accès aux données avec PDO et requêtes paramétrées</li>
+                        <li>Appliquer les bonnes pratiques de sécurité web (XSS, injection SQL, hachage)</li>
+                        <li>Générer des documents PDF dynamiques avec dompdf</li>
+                        <li>Concevoir des formulaires avec validation côté serveur</li>
+                        <li>Utiliser Git pour le versioning du projet</li>
                     </ul>
                 </div>
 
@@ -141,6 +394,7 @@
         </a>
     </footer>
 
+    <script type="module" src="../js/notedefrais-react.js"></script>
 </body>
 
 </html>

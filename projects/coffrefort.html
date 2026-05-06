@@ -25,7 +25,7 @@
 <body>
 
     <header class="project-page-header">
-        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html" class="logo">_Denys</a>
         <a href="../index.html#projects" class="back-btn">
             <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
         </a>
@@ -281,6 +281,34 @@
                         <li>Base de données avec triggers et contraintes CASCADE complètes</li>
                         <li>Containerisation Docker Compose : PHP-FPM + Nginx + MySQL</li>
                     </ul>
+                </div>
+
+                <!-- Modèle Physique de Données -->
+                <div class="project-section">
+                    <h2>Modèle Physique de Données</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                La base de données a été conçue avec la méthode <strong>Merise</strong>
+                                (MCD → MLD → MPD). Le MPD définit l'ensemble des tables, clés primaires,
+                                clés étrangères et contraintes d'intégrité du système de coffre-fort numérique.
+                            </p>
+                            <ul>
+                                <li>Tables principales : <code>users</code>, <code>folders</code>, <code>files</code>, <code>file_versions</code></li>
+                                <li>Tables de liaison : <code>shares</code>, <code>audit_logs</code></li>
+                                <li>Contraintes <code>CASCADE</code> sur les suppressions — dossiers, fichiers, versions et partages nettoyés</li>
+                                <li>Champ <code>iv</code> et <code>auth_tag</code> par version — intégrité AES-256-GCM garantie</li>
+                                <li>Champ <code>checksum</code> SHA-256 par version — détection d'altération des données au repos</li>
+                                <li>Respect de la <strong>3NF</strong> — aucune redondance, dépendances fonctionnelles directes</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/CryptoVault/MPD.jpg"
+                                 alt="Modèle Physique de Données CryptoVault"
+                                 loading="lazy">
+                            <span class="cv-img-caption">MPD — modélisation Merise de la base de données</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Sécurité -->

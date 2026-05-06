@@ -3,44 +3,29 @@ import { createRoot } from 'react-dom/client';
 import { html } from 'htm/react';
 
 /* ═══════════════════════════════════════
-   SCREENSHOTS DATA
+   SLIDES DATA
 ═══════════════════════════════════════ */
 
 const SLIDES = [
   {
-    src:     '../img/CryptoVault/coffreFort.png',
-    label:   'Tableau de bord',
-    caption: 'Interface principale — liste des fichiers chiffrés, barre de quota et arborescence de dossiers.',
+    src:     '../img/NoteDeFrais/Menu.png',
+    label:   'Menu principal',
+    caption: 'Interface de navigation — accès à la saisie, l\'historique, le profil et l\'export PDF.',
   },
   {
-    src:     '../img/CryptoVault/menu_coffrefort.png',
-    label:   'Menu & Navigation',
-    caption: 'Menu de navigation latéral — accès aux dossiers, actions rapides et panneau de paramètres.',
+    src:     '../img/NoteDeFrais/Formulaire_NoteDeFrais.png',
+    label:   'Formulaire de saisie',
+    caption: 'Saisie d\'une note de frais — catégorie, date, description, montants HT/TTC et justificatif.',
   },
   {
-    src:     '../img/CryptoVault/choix_fichier_coffrefort.png',
-    label:   'Upload de fichier',
-    caption: 'Dialogue de sélection et upload — barre de progression en temps réel, support des fichiers volumineux.',
+    src:     '../img/NoteDeFrais/Vue_PDF.png',
+    label:   'Aperçu PDF',
+    caption: 'Document PDF généré via dompdf — récapitulatif professionnel formaté A4, prêt à l\'impression.',
   },
   {
-    src:     '../img/CryptoVault/choix_quotas_coffrefort.png',
-    label:   'Gestion des quotas',
-    caption: 'Panneau d\'administration — ajustement des quotas par utilisateur avec alertes visuelles à 80 % et 90 %.',
-  },
-  {
-    src:     '../img/CryptoVault/19FB025E-BE13-4D23-B86F-92B838296B5D.png',
-    label:   'Gestion des versions',
-    caption: 'Historique de versions — checksum SHA-256, date d\'upload, téléchargement sélectif de n\'importe quelle révision.',
-  },
-  {
-    src:     '../img/CryptoVault/D77FB0F3-6042-4420-A874-D0FD3D605A53.png',
-    label:   'Partage sécurisé',
-    caption: 'Interface de partage — génération de tokens base64url signés avec expiration, limitation d\'usages et révocation.',
-  },
-  {
-    src:     '../img/CryptoVault/MPD.jpg',
+    src:     '../img/NoteDeFrais/MPD.jpg',
     label:   'Modèle Physique de Données',
-    caption: 'MPD conçu avec la méthode Merise — tables, clés primaires, clés étrangères et contraintes CASCADE complètes.',
+    caption: 'MPD conçu avec la méthode Merise — tables, clés primaires, clés étrangères et contraintes d\'intégrité.',
   },
 ];
 
@@ -51,11 +36,11 @@ const AUTOPLAY_DELAY = 4500;
 ═══════════════════════════════════════ */
 
 function Carousel() {
-  const [current, setCurrent]   = useState(0);
-  const [prev,    setPrev]      = useState(null);   // index leaving
-  const [dir,     setDir]       = useState(1);      // +1 = forward, -1 = backward
-  const [animKey, setAnimKey]   = useState(0);      // forces re-trigger
-  const [paused,  setPaused]    = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [prev,    setPrev]    = useState(null);
+  const [dir,     setDir]     = useState(1);
+  const [animKey, setAnimKey] = useState(0);
+  const [paused,  setPaused]  = useState(false);
   const timerRef = useRef(null);
 
   const goTo = useCallback((next, direction) => {
@@ -67,23 +52,19 @@ function Carousel() {
   }, [current]);
 
   const goNext = useCallback(() => {
-    const next = (current + 1) % SLIDES.length;
-    goTo(next, 1);
+    goTo((current + 1) % SLIDES.length, 1);
   }, [current, goTo]);
 
   const goPrev = useCallback(() => {
-    const next = (current - 1 + SLIDES.length) % SLIDES.length;
-    goTo(next, -1);
+    goTo((current - 1 + SLIDES.length) % SLIDES.length, -1);
   }, [current, goTo]);
 
-  // Autoplay
   useEffect(() => {
     if (paused) return;
     timerRef.current = setTimeout(goNext, AUTOPLAY_DELAY);
     return () => clearTimeout(timerRef.current);
   }, [current, paused, goNext]);
 
-  // Keyboard
   useEffect(() => {
     const handle = (e) => {
       if (e.key === 'ArrowRight') goNext();
@@ -101,9 +82,8 @@ function Carousel() {
       onMouseEnter=${() => setPaused(true)}
       onMouseLeave=${() => setPaused(false)}
       aria-roledescription="carousel"
-      aria-label="Captures d'écran CryptoVault"
+      aria-label="Captures d'écran Note de Frais"
     >
-      <!-- Slide area -->
       <div className="cv-carousel-stage" aria-live="polite">
         <img
           key=${animKey}
@@ -114,7 +94,6 @@ function Carousel() {
         />
       </div>
 
-      <!-- Prev / Next -->
       <button
         className="cv-car-btn cv-car-btn--prev"
         onClick=${goPrev}
@@ -130,14 +109,12 @@ function Carousel() {
         <i className="bx bx-chevron-right" aria-hidden="true"></i>
       </button>
 
-      <!-- Caption bar -->
       <div className="cv-car-caption">
         <span className="cv-car-label">${slide.label}</span>
         <span className="cv-car-text">${slide.caption}</span>
         <span className="cv-car-counter">${current + 1} / ${SLIDES.length}</span>
       </div>
 
-      <!-- Dot indicators -->
       <div className="cv-car-dots" role="tablist">
         ${SLIDES.map((s, i) => html`
           <button
@@ -151,7 +128,6 @@ function Carousel() {
         `)}
       </div>
 
-      <!-- Progress bar -->
       <div
         className=${'cv-car-progress' + (paused ? ' cv-car-progress--paused' : '')}
         key=${'p' + animKey}
@@ -165,5 +141,5 @@ function Carousel() {
    MOUNT
 ═══════════════════════════════════════ */
 
-const el = document.getElementById('cv-gallery');
+const el = document.getElementById('ndf-gallery');
 if (el) createRoot(el).render(html`<${Carousel} />`);

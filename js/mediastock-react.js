@@ -55,6 +55,24 @@ const SLIDES = [
     caption: 'Interface de gestion des prêts actifs — liste des emprunts en cours, retours et clôture automatique.',
     mobile:  false,
   },
+  {
+    src:     '../img/MediaStock/MPD.jpg',
+    label:   'Modèle Physique de Données',
+    caption: 'MPD conçu avec la méthode Merise — tables, clés primaires, clés étrangères et contraintes CASCADE.',
+    mobile:  false,
+  },
+  {
+    src:     '../img/MediaStock/PHOTO-2025-11-12-14-57-40.jpg',
+    label:   'Backlog projet (1/2)',
+    caption: 'Backlog de gestion de projet — phases 1 & 2 : Préparation, Conception, Développement & Intégration avec priorités MoSCoW.',
+    mobile:  false,
+  },
+  {
+    src:     '../img/MediaStock/PHOTO-2025-11-12-14-57-40 2.jpg',
+    label:   'Backlog projet (2/2)',
+    caption: 'Backlog de gestion de projet — phases 3 & 4 : Tests, Mise en Production et Finalisation.',
+    mobile:  false,
+  },
 ];
 
 const AUTOPLAY_DELAY = 4500;

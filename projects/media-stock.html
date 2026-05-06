@@ -25,7 +25,7 @@
 <body>
 
     <header class="project-page-header">
-        <a href="../index.html" class="logo">Denys.</a>
+        <a href="../index.html" class="logo">_Denys</a>
         <a href="../index.html#projects" class="back-btn">
             <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
         </a>
@@ -105,8 +105,7 @@
                     </p>
                     <p>
                         Entièrement <strong>conteneurisée avec Docker Compose</strong>, l'application garantit
-                        un environnement reproductible. Développée en BTS SIO SLAM (session 2025) par
-                        Yanis ADIDI, avec contribution de Denys Lyulchak.
+                        un environnement reproductible. Développée en BTS SIO SLAM (session 2025), elle mobilise des compétences en PHP, MySQL, JavaScript, Bootstrap et gestion de projet collaboratif.
                     </p>
 
                     <div class="cv-overview-cards">
@@ -282,6 +281,34 @@
                     </div>
                 </div>
 
+                <!-- Modèle Physique de Données -->
+                <div class="project-section">
+                    <h2>Modèle Physique de Données</h2>
+                    <div class="cv-split">
+                        <div>
+                            <p>
+                                La base de données a été conçue avec la méthode <strong>Merise</strong>
+                                (MCD → MLD → MPD). Le MPD définit l'ensemble des tables, clés primaires,
+                                clés étrangères et contraintes d'intégrité du système de médiathèque.
+                            </p>
+                            <ul>
+                                <li>Tables principales : <code>media</code>, <code>utilisateur</code>, <code>categorie</code>, <code>localisation</code></li>
+                                <li>Table de liaison <code>emprunt</code> — suivi des prêts avec dates et statuts</li>
+                                <li>Contraintes <code>CASCADE</code> sur les suppressions pour l'intégrité référentielle</li>
+                                <li>Archivage logique des médias — aucune suppression physique, traçabilité totale</li>
+                                <li>Index sur les colonnes de jointure et de recherche fréquentes</li>
+                                <li>Respect de la <strong>3NF</strong> — dépendances fonctionnelles directes</li>
+                            </ul>
+                        </div>
+                        <div class="cv-img-aside">
+                            <img src="../img/MediaStock/MPD.jpg"
+                                 alt="Modèle Physique de Données MediaStock"
+                                 loading="lazy">
+                            <span class="cv-img-caption">MPD — modélisation Merise de la base de données</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Fonctionnalités clés grid -->
                 <div class="project-section">
                     <h2>Points clés</h2>
@@ -365,7 +392,7 @@
     </main>
 
     <footer class="project-footer">
-        <p>Projet BTS SIO SLAM — Yanis ADIDI (2025) · Contributeur : Denys Lyulchak</p>
+        <p>Projet BTS SIO SLAM — Denys Lyulchak</p>
         <a href="../index.html#projects">
             <i class='bx bx-left-arrow-alt' aria-hidden="true"></i> Retour aux projets
         </a>
